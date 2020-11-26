@@ -1,0 +1,39 @@
+#!/bin/bash
+
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+# Tree shortcuts
+alias lt='tree -L 1 -a'
+alias lt2='tree -L 2 -a'
+alias lt3='tree -L 3 -a'
+
+# Change directory shortcuts
+alias cd2='cd ../..'
+alias cd3='cd ../../..'
+alias cd4='cd ../../..'
+alias cdproj='cd ~/Projects'
+
+# Copy to clipboard
+alias ccc='xclip -sel clip'
+
+# Check Internet Connection
+alias internet='~/.bashrc_scripts/check_internet.sh'
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=critical -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+# git add and commit
+alias gitac='git add . && git commit -m "minor quick changes"'
+
+# arp-sca
+alias arp="sudo arp-scan -l"
+
+# Send a file with croc
+alias croc-send="croc send --code ismet-mail"
+
+# Creating a python3 virtual envirnoment
+alias mkpyvenv="python3 -m venv env; source env/bin/activate"
