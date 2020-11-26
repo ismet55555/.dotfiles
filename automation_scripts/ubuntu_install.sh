@@ -6,7 +6,8 @@
 #
 #       1. Give this script file executable rights: 
 #           sudo chmod +x linux_setup_debian`
-#       2. Run the script with sudo:
+#
+#       2. Run the script with amdin/sudo:
 #           sudo ./linux_setup_debian
 #
 #   ZSH Customization
