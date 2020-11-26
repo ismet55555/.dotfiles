@@ -1,5 +1,11 @@
 #!/bin/bash
 
+###############################################################################
+#
+#                            Aliases for Terminal
+#
+###############################################################################
+
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
@@ -18,6 +24,9 @@ alias cdproj='cd ~/Projects'
 
 # Copy to clipboard
 alias ccc='xclip -sel clip'
+
+# Search history for specific keyword
+alias history-find="cat ~/.bash_history | grep -T -E"
 
 # Check Internet Connection
 alias internet='~/.bashrc_scripts/check_internet.sh'
