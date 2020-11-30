@@ -172,6 +172,14 @@ echo
 echo "============== Installing: oh-my-zsh ============"
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
+# bat (fancy cat)
+echo
+echo "================ Installing: bat ================"
+export BAT_VERSION="0.17.1"
+wget -O bat.zip https://github.com/sharkdp/bat/releases/download/v$BAT_VERSION/bat-v$BAT_VERSION-x86_64-unknown-linux-musl.tar.gz
+tar -xvzf bat.zip -C /usr/local
+mv /usr/local/bat-v$BAT_VERSION-x86_64-unknown-linux-musl /usr/local/bat
+alias bat='/usr/local/bat/bat'
 
 
 ###############################################################################
