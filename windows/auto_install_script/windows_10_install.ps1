@@ -83,6 +83,10 @@ echo ""
 echo "==================== Installing: Node JS ======================="
 choco install nodejs -y
 
+# Croc File Transfer
+echo ""
+echo "====================== Installing: croc ========================"
+choco install croc -y
 
 
 echo ""
