@@ -147,7 +147,7 @@ apt -y install awscli
 # boto3 AWS python wrapper
 echo
 echo "=============== Installing: boto3 ================"
-pip3 install -y boto3 --user
+pip3 install boto3 --user
 
 # Visual Studio Code
 echo
@@ -213,7 +213,7 @@ snap install postman
 # croc
 echo
 echo "============= Installing: croc =================="
-snap install croc
+curl https://getcroc.schollz.com | bash
 
 
 ###############################################################################
