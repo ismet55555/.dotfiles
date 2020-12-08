@@ -157,7 +157,7 @@ snap install --classic code
 # Docker
 echo
 echo "=========== Installing: Docker =================="
-apt install docker.io
+apt -y install docker.io
 systemctl start docker
 systemctl enable docker
 systemctl status docker
@@ -165,12 +165,22 @@ systemctl status docker
 # zsh
 echo
 echo "================= Installing: zsh ==============="
-apt-get install zsh
+apt-get -y install zsh
 
 # oh-my-zsh
 echo
 echo "============== Installing: oh-my-zsh ============"
-sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+
+# Install Powerline command line
+sudo apt -y install powerline fonts-powerline
+
+# Install ZSH powerline 10k theme
+#     https://github.com/romkatv/powerlevel10k
+# NOTE: 
+#  - Add "ZSH_THEME="powerlevel10k/powerlevel10k" to ~./zshrc
+#  - Will take you trough the setting up powerline look
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
 # bat (fancy cat)
 echo
