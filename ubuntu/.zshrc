@@ -104,11 +104,11 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(git)
 
 # zsh autosuggestions
-# https://github.com/zsh-users/zsh-autosuggestions
+#    Oh-mh-zsh: git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 plugins=(zsh-autosuggestions)
 
 # zsh syntax highlighting
-# https://github.com/zsh-users/zsh-syntax-highlighting
+#    Oh-mh-zsh: git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 plugins=(zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
