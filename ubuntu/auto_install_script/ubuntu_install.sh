@@ -162,7 +162,16 @@ systemctl start docker
 systemctl enable docker
 systemctl status docker
 
-# zsh
+# bat (fancy cat)
+echo
+echo "================ Installing: bat ================"
+export BAT_VERSION="0.17.1"
+wget -O bat.zip https://github.com/sharkdp/bat/releases/download/v$BAT_VERSION/bat-v$BAT_VERSION-x86_64-unknown-linux-musl.tar.gz
+tar -xvzf bat.zip -C /usr/local
+mv /usr/local/bat-v$BAT_VERSION-x86_64-unknown-linux-musl /usr/local/bat
+alias bat='/usr/local/bat/bat'
+
+# ZSH
 echo
 echo "================= Installing: zsh ==============="
 apt-get -y install zsh
@@ -172,24 +181,24 @@ echo
 echo "============== Installing: oh-my-zsh ============"
 sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
 
-# Install Powerline command line
+echo
+echo "=========== Installing: Setting up ZSH =========="
+# ZSH Theme: powerline10k
+#     NOTE: Ensure the following is in ~./zshrc
+#           ZSH_THEME="powerlevel10k/powerlevel10k"
 sudo apt -y install powerline fonts-powerline
-
-# Install ZSH powerline 10k theme
-#     https://github.com/romkatv/powerlevel10k
-# NOTE: 
-#  - Add "ZSH_THEME="powerlevel10k/powerlevel10k" to ~./zshrc
-#  - Will take you trough the setting up powerline look
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
-# bat (fancy cat)
-echo
-echo "================ Installing: bat ================"
-export BAT_VERSION="0.17.1"
-wget -O bat.zip https://github.com/sharkdp/bat/releases/download/v$BAT_VERSION/bat-v$BAT_VERSION-x86_64-unknown-linux-musl.tar.gz
-tar -xvzf bat.zip -C /usr/local
-mv /usr/local/bat-v$BAT_VERSION-x86_64-unknown-linux-musl /usr/local/bat
-alias bat='/usr/local/bat/bat'
+# ZSH Plugin: zsh-autosuggestions
+#     NOTE: Ensure the following is ~./zshrc
+#           plugins=(zsh-autosuggestions)
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+# ZSH Plugin: zsh-syntax-highlighting
+#     NOTE: Ensure the following is ~./zshrc
+#           plugins=(zsh-syntax-highlighting)
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
 
 
 ###############################################################################
