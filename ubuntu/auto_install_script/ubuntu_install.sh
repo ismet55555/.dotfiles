@@ -176,6 +176,16 @@ echo
 echo "================= Installing: zsh ==============="
 apt-get -y install zsh
 
+# List all shells on system
+echo
+echo "The following shells are avilable for this system"
+grep zsh /etc/shells
+
+# Changing user shell to ZSH
+echo
+echo "Changing default shell to ZSH"
+chsh -s $(which zsh)
+
 # oh-my-zsh
 echo
 echo "============== Installing: oh-my-zsh ============"
@@ -199,8 +209,6 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 #           plugins=(zsh-syntax-highlighting)
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
-# Changing user shell to ZSH
-chsh -s $(which zsh)
 
 
 ###############################################################################
