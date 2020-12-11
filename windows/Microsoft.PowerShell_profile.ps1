@@ -10,13 +10,19 @@
 #
 ###############################################################################
 #
-# Notes:
+# NOTES:
 #
 # 	- Check the location of the current Powershell profile file with:
 # 		> $profile
+#
+# 	- Note that there is a powershell profile for system and one for user
+# 		- User:   Documents/Powershell
+# 		- System: Documents/WindowsPowerShell
+#
 #       - To change the Integrated terminal in VS Code add this in settings.json
 #    		"terminal.integrated.shell.windows": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
 #    		"terminal.integrated.shellArgs.windows": "-nologo"
+#
 ###############################################################################
 
 # Import posh-git
