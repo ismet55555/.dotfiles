@@ -14,7 +14,9 @@
 #
 # 	- Check the location of the current Powershell profile file with:
 # 		> $profile
-#
+#       - To change the Integrated terminal in VS Code add this in settings.json
+#    		"terminal.integrated.shell.windows": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+#    		"terminal.integrated.shellArgs.windows": "-nologo"
 ###############################################################################
 
 # Import posh-git
@@ -27,7 +29,8 @@ Import-Module oh-my-posh
 Set-Prompt
 
 # Set the desired theme for powerline
-Set-Theme Agnoster
+#   To list more oh-my-posh themes type: > Get-Theme
+Set-Theme Powerlevel10k-Lean
 
 
 ###############################################################################
