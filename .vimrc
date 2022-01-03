@@ -18,6 +18,7 @@ set nocompatible"
 " 							General Settings
 " =============================================================================
 set number			" Show line numbers
+set rnu         " Relative line numbers
 syntax on 			" Turn on syntax highlighting
 set encoding=utf-8  " set encoding to UTF-8 (default was "latin1")
 set foldenable 		" enable folding
@@ -25,7 +26,7 @@ set visualbell 		" Blink cursor on error instead of beeping (grr)
 set ruler			" show line and column number of the cursor on right side of statusline
 set mouse=a			" enable mouse support (might not work well on Mac OS X)
 set autoread		"Reload files changed outside vim
-set cursorline 		" Highlight current line (underline)
+" set cursorline 		" Highlight current line (underline)
 
 
 " =============================================================================
