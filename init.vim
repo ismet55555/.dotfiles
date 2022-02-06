@@ -35,7 +35,7 @@ set title                                   " Show file title
 set cc=100                                  " Show at 80 column a border for good code style
 set spell                                   " enable spell check (may need to download language package)
 set ttyfast                                 " Speed up scrolling in Vim
-
+set lcs+=space:·                            " Show spaces
 
 
 " =============================================================================
@@ -101,6 +101,7 @@ Plug 'tpope/vim-fugitive'               " https://github.com/tpope/vim-fugitive
 Plug 'ryanoasis/vim-devicons'           " https://github.com/ryanoasis/vim-devicons
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'    " https://github.com/nvim-telescope/telescope.nvim
+Plug 'Yggdroot/indentLine'              " https://github.com/Yggdroot/indentLine
 
 " Initialize plugin system
 call plug#end()
