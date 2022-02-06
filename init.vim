@@ -138,7 +138,14 @@ autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
 " ==============================================================
 "                       Key Mapping/Binding
 " ==============================================================
-nmap <C-p> :NERDTreeToggle<CR>
+let mapleader = "`"                 " Prefix to custom mappings
+
+nmap <C-p> :NERDTreeToggle<CR>      " Toggle open/close NERDtree
+nmap <C-g> :Git<CR>                 " Open figutive git
+
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 
 
 " ==============================================================
