@@ -5,6 +5,11 @@
 " | |\  |  __/ (_) \  /   _| |_| |  | |
 " |_| \_|\___|\___/ \/   |_____|_|  |_|
 
+" Place this file into the following directory:
+"   - Windows:     ~\AppData\Local\nvim\
+"   - MacOS/Linux: ~/.config/nvim/
+
+
 " This must be first, because it changes other options as a side effect.
 set nocompatible"
 
