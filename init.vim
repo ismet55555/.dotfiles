@@ -5,7 +5,10 @@
 " | |\  |  __/ (_) \  /   _| |_| |  | |
 " |_| \_|\___|\___/ \/   |_____|_|  |_|
 
-" Place this file into the following directory:
+" Install NeoVim
+"   - https://github.com/neovim/neovim/wiki/Installing-Neovim
+"
+" Place this configuration file into the following directory:
 "   - Windows:     ~\AppData\Local\nvim\
 "   - MacOS/Linux: ~/.config/nvim/
 
@@ -125,9 +128,17 @@ let NERDTreeQuitOnOpen=1
 let g:NERDSpaceDelims = 1               " https://github.com/preservim/nerdcommenter#usage
 autocmd VimEnter * NERDTree | wincmd p  " Start NERDTree and put the cursor back in the other window.
 
+" Ignore patterns are regular expression strings and seprated by comma
+let NERDTreeIgnore = ['\.pyc$', '^__pycache__$']
+
 " Open the existing NERDTree on each new tab.
 autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
 
+
+" ==============================================================
+"                       Key Mapping/Binding
+" ==============================================================
+nmap <C-p> :NERDTreeToggle<CR>
 
 
 " ==============================================================
