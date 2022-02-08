@@ -7,10 +7,18 @@
 
 " Install NeoVim
 "   - https://github.com/neovim/neovim/wiki/Installing-Neovim
+"   - https://github.com/neovim/neovim/releases
+"
+" Install VIM-Plug package manager
+"   - https://github.com/junegunn/vim-plug
 "
 " Place this configuration file into the following directory:
 "   - Windows:     ~\AppData\Local\nvim\
 "   - MacOS/Linux: ~/.config/nvim/
+"
+" Open NeoVim (nvim) and install all listed packages
+"   - After opening neovim/vim, run:   :PlugInstall
+"   - Run this anytime you modify, add, remove plugins
 
 
 " This must be first, because it changes other options as a side effect.
@@ -78,10 +86,6 @@ set wildignore+=*.png,*.jpg,*.gif
 " ==============================================================
 " VIM Plug - Plugins
 " ==============================================================
-" Install vim-plug via terminal:
-"    - https://github.com/junegunn/vim-plug
-"    - To install all plugin, after opening neovim/vim, run:   :PlugInstall
-
 " Setup plugin system
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
