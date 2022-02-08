@@ -142,7 +142,7 @@ autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
 " ==============================================================
 "                       Key Mapping/Binding
 " ==============================================================
-let mapleader = "`"       " This is <leader> key
+let mapleader = " "       " This is <leader> key
 
 nmap <C-p> :NERDTreeToggle<CR>
 nmap <C-g> :Git<CR>
