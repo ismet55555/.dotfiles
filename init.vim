@@ -109,6 +109,11 @@ Plug 'ryanoasis/vim-devicons'           " https://github.com/ryanoasis/vim-devic
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'    " https://github.com/nvim-telescope/telescope.nvim
 Plug 'Yggdroot/indentLine'              " https://github.com/Yggdroot/indentLine
+if has('nvim') || has('patch-8.0.902')  " https://github.com/mhinz/vim-signify
+  Plug 'mhinz/vim-signify'
+else
+  Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
+endif
 
 " Initialize plugin system
 call plug#end()
