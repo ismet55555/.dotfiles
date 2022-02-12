@@ -24,8 +24,9 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible"
 
+
 " =============================================================================
-" 							General Settings
+"                           General Settings
 " =============================================================================
 set number			    " Show line numbers
 syntax on 		     	" Turn on syntax highlighting
@@ -50,7 +51,7 @@ set lcs+=space:·                            " Show spaces
 
 
 " =============================================================================
-"		 				Tab and Identation settings
+"	                       Tab and Identation settings
 " =============================================================================
 filetype plugin indent on  " Allow auto-indenting depending on file type
 set tabstop=4           " width that a <TAB> character displays as
@@ -59,18 +60,22 @@ set shiftwidth=4        " number of spaces to use for each step of (auto)indent
 set softtabstop=4       " backspace after pressing <TAB> will remove up to this many spaces
 set autoindent          " copy indent from current line when starting a new line
 set smartindent         " even better autoindent (e.g. add indent after '{')'}')
+
+
 " =============================================================================
-" 								Search Settings
+"                              Search Settings
 " =============================================================================
 set incsearch       " Find the next match as we type the search
 set hlsearch        " Highlight searches by default
 set ignorecase      " Ignore case when searching...
-set smartcase       " ...unless we type a capital
+set smartcase       " ...unless we type all capital
+
+
 " =============================================================================
-" 						VIM Command Completion Settings
+"                       VIM Command Completion Settings
 " =============================================================================
-set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
-set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
+set wildmenu                    "enable ctrl-n and ctrl-p to scroll thru matches
+set wildignore=*.o,*.obj,*~     "stuff to ignore when tab completing
 set wildignore+=*vim/backups*
 set wildignore+=*sass-cache*
 set wildignore+=*DS_Store*
@@ -82,10 +87,9 @@ set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
 
 
-
-" ==============================================================
-" VIM Plug - Plugins
-" ==============================================================
+" =============================================================================
+"                                VIM Plug - Plugins
+" =============================================================================
 " Setup plugin system
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
@@ -119,9 +123,9 @@ endif
 call plug#end()
 
 
-" ==============================================================
-" Customization
-" ==============================================================
+" =============================================================================
+"                                 Customization
+" =============================================================================
 colorscheme sonokai
 
 let g:bargreybars_auto=0
@@ -135,7 +139,7 @@ let g:airline#extension#tabline#formatter='unique_tail'
 
 let NERDTreeQuitOnOpen=1
 let g:NERDSpaceDelims = 1               " https://github.com/preservim/nerdcommenter#usage
-autocmd VimEnter * NERDTree | wincmd p  " Start NERDTree and put the cursor back in the other window.
+" autocmd VimEnter * NERDTree | wincmd p  " Start NERDTree and put the cursor back in the other window.
 
 " Ignore patterns are regular expression strings and seprated by comma
 let NERDTreeIgnore = ['\.pyc$', '^__pycache__$']
@@ -144,10 +148,15 @@ let NERDTreeIgnore = ['\.pyc$', '^__pycache__$']
 autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
 
 
-" ==============================================================
+" =============================================================================
 "                       Key Mapping/Binding
-" ==============================================================
-let mapleader = " "       " This is <leader> key
+" =============================================================================
+" This is <leader> key
+let mapleader = " "
+
+" Map j-j and k-k to ESC key
+imap jk <Esc>
+imap kj <Esc>
 
 nmap <C-p> :NERDTreeToggle<CR>
 nmap <C-g> :Git<CR>
@@ -165,11 +174,15 @@ vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 
 " Use CTRL-[hjkl] to select the active window panes
-nmap <silent> <c-k> :wincmd k<CR> " CTRL+k
-nmap <silent> <c-j> :wincmd j<CR> " CTRL+j
-nmap <silent> <c-h> :wincmd h<CR> " CTRL+h
-nmap <silent> <c-l> :wincmd l<CR> " CTRL+l
+nmap <silent> <c-k> :wincmd k<CR>    " CTRL+k
+nmap <silent> <c-j> :wincmd j<CR>    " CTRL+j
+nmap <silent> <c-h> :wincmd h<CR>    " CTRL+h
+nmap <silent> <c-l> :wincmd l<CR>    " CTRL+l
+
 
 " ==============================================================
-" NOTE: Remember to run :PlugInstall within nvim or vim
+"                Specific File Syntax Highlight
 " ==============================================================
+" Usage: au BufNewFile,BufRead *<NAME OF FILE WITH WILDCARDS* setf <FILE TYPE>
+
+au BufNewFile,BufRead *Jenkinsfile* setf groovy
