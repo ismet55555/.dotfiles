@@ -164,6 +164,11 @@ inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 
+" Use CTRL-[hjkl] to select the active window panes
+nmap <silent> <c-k> :wincmd k<CR> " CTRL+k
+nmap <silent> <c-j> :wincmd j<CR> " CTRL+j
+nmap <silent> <c-h> :wincmd h<CR> " CTRL+h
+nmap <silent> <c-l> :wincmd l<CR> " CTRL+l
 
 " ==============================================================
 " NOTE: Remember to run :PlugInstall within nvim or vim
