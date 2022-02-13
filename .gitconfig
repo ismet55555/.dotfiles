@@ -3,7 +3,7 @@
 	name = Ismet Handzic
 	username = ismet55555
 [core]
-	editor = vim
+	editor = nvim
 [web]
 	browser = google-chrome
 [alias]
