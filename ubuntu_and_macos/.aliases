@@ -53,3 +53,9 @@ alias croc-send="croc send --code ismet-mail"
 
 # Creating a python3 virtual envirnoment
 alias mkpyvenv="python3 -m venv env; source env/bin/activate"
+
+# Substituting exa for ls
+alias ls="exa"
+
+# Subsituting bat for cat
+alias cat="bat"
