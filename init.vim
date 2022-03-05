@@ -1,11 +1,10 @@
-"  _   _        __      _______ __  __ 
-" | \ | |       \ \    / /_   _|  \/  |
-" |  \| | ___  __\ \  / /  | | | \  / |
-" | . ` |/ _ \/ _ \ \/ /   | | | |\/| |
-" | |\  |  __/ (_) \  /   _| |_| |  | |
-" |_| \_|\___|\___/ \/   |_____|_|  |_|
+"  _    ________  ___
+" | |  / /  _/  |/  /
+" | | / // // /|_/ / 
+" | |/ // // /  / /  
+" |___/___/_/  /_/                     
 
-" Install NeoVim
+" Install NeoVim (Optional)
 "   - https://github.com/neovim/neovim/wiki/Installing-Neovim
 "   - https://github.com/neovim/neovim/releases
 "
@@ -113,6 +112,8 @@ Plug 'ryanoasis/vim-devicons'           " https://github.com/ryanoasis/vim-devic
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'    " https://github.com/nvim-telescope/telescope.nvim
 Plug 'Yggdroot/indentLine'              " https://github.com/Yggdroot/indentLine
+Plug 'easymotion/vim-easymotion'        " https://github.com/easymotion/vim-easymotion
+Plug 'tpope/vim-unimpaired'             " https://github.com/tpope/vim-unimpaired
 if has('nvim') || has('patch-8.0.902')  " https://github.com/mhinz/vim-signify
   Plug 'mhinz/vim-signify'
 else
@@ -147,6 +148,10 @@ let NERDTreeIgnore = ['\.pyc$', '^__pycache__$']
 " Open the existing NERDTree on each new tab.
 autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
 
+" Easy motion configuration
+let g:EasyMotion_smartcase = 1
+nmap s <Plug>(easymotion-overwin-f)
+
 
 " =============================================================================
 "                       Key Mapping/Binding
@@ -162,8 +167,8 @@ nmap <C-p> :NERDTreeToggle<CR>
 nmap <C-g> :Git<CR>
 
 " Find files using Telescope command-line sugar.
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>ff <cmd>Telescope find_files<CR>
+nnoremap <leader>fg <cmd>Telescope live_grep<CR>
 
 " Swap Lines (A = Alt/Option)
 nnoremap <A-j> :m .+1<CR>==
@@ -178,6 +183,12 @@ nmap <silent> <c-k> :wincmd k<CR>    " CTRL+k
 nmap <silent> <c-j> :wincmd j<CR>    " CTRL+j
 nmap <silent> <c-h> :wincmd h<CR>    " CTRL+h
 nmap <silent> <c-l> :wincmd l<CR>    " CTRL+l
+
+" Replace CTRL-W with "/"
+nnoremap <silent> <Bslash> :wincmd w<CR>
+
+" Select all in current file
+nnoremap <leader>a ggVG
 
 
 " ==============================================================
