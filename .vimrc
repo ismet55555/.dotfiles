@@ -6,86 +6,86 @@
 "
 " =============================================================================
 "
-" install neovim (optional)
-"   - https://github.com/neovim/neovim/wiki/installing-neovim
+" Install NeoVim (Optional)
+"   - https://github.com/neovim/neovim/wiki/Installing-Neovim
 "   - https://github.com/neovim/neovim/releases
 "
-" install vim-plug package manager
+" Install VIM-Plug package manager
 "   - https://github.com/junegunn/vim-plug
 "
-" place this configuration file into the following directory:
-"   - neovim
-"       - windows:     ~\appdata\local\nvim\
-"       - macos/linux: ~/.config/nvim/
-"   - vim
+" Place this configuration file into the following directory:
+"   - NeoVim
+"       - Windows:     ~\AppData\Local\nvim\<HERE>
+"       - MacOS/Linux: ~/.config/nvim/<HERE>
+"   - Vim
 "       - ~/.vimrc
 "
-" open neovim (nvim)/ vim (vim) and install all listed packages
-"   - after opening neovim/vim, run:   :pluginstall
-"   - run this anytime you modify, add, remove plugins
+" Open NeoVim (nvim)/ Vim (vim) and install all listed packages
+"   - After opening neovim/vim, run:   :PlugInstall
+"   - Run this anytime you modify, add, remove plugins
 "
 " =============================================================================
 
-" this must be first
+" This must be first
 "    https://vi.stackexchange.com/questions/25149/advice-to-add-set-nocompatible-as-first-line-of-vimrc
 set nocompatible"
 
 
 " =============================================================================
-"                           general settings
+"                           General Settings
 " =============================================================================
-set number			    " show line numbers
-syntax on 		     	" turn on syntax highlighting
-set encoding=utf-8      " set encoding to utf-8 (default was "latin1")
-set foldenable 		    " enable folding
-set visualbell 		    " blink cursor on error instead of beeping (grr)
-set ruler		        " show line and column number of the cursor on right side of statusline
-set mouse=a			    " enable mouse support (might not work well on mac os x)
-set autoread		    "reload files changed outside vim
-"set cursorline 		" highlight current line (underline)
-set conceallevel=0      " remove any text/code concealment, text is shown normally
+set number			    " Show line numbers
+syntax on 		     	" Turn on syntax highlighting
+set encoding=utf-8      " Set encoding to UTF-8 (default was "latin1")
+set foldenable 		    " Enable folding
+set visualbell 		    " Blink cursor on error instead of beeping (grr)
+set ruler		        " Show line and column number of the cursor on right side of statusline
+set mouse=a			    " Enable mouse support (might not work well on Mac OS X)
+set autoread		    " Reload files changed outside vim
+"set cursorline 		" Highlight current line (underline)
+set conceallevel=0      " Remove any text/code concealment, text is shown normally
 
-set clipboard=unnamedplus                   " enables the clipboard between vim/neovim and other applications.
-set completeopt=noinsert,menuone,noselect   " modifies the auto-complete menu to behave more like an ide.
-set hidden                                  " hide unused buffers
-set inccommand=split                        " show replacements in a split screen
-set splitbelow splitright                   " change the split screen behavior
-set title                                   " show file title
-set cc=100                                  " show column a border for good code style
-set spell                                   " enable spell check (may need to download language package)
-set ttyfast                                 " speed up scrolling in vim
-set lcs+=space:·                            " show spaces
-
-
-" =============================================================================
-"	                       tab and identation settings
-" =============================================================================
-filetype plugin indent on  " allow auto-indenting depending on file type
-set tabstop=4           " width that a <tab> character displays as
-set expandtab           " convert <tab> key-presses to spaces
-set shiftwidth=4        " number of spaces to use for each step of (auto)indent
-set softtabstop=4       " backspace after pressing <tab> will remove up to this many spaces
-set autoindent          " copy indent from current line when starting a new line
-set smartindent         " even better autoindent (e.g. add indent after '{')'}')
+set clipboard=unnamedplus                   " Enables the clipboard between Vim/Neovim and other applications.
+set completeopt=noinsert,menuone,noselect   " Modifies the auto-complete menu to behave more like an IDE.
+set hidden                                  " Hide unused buffers
+set inccommand=split                        " Show replacements in a split screen
+set splitbelow splitright                   " Change the split screen behavior
+set title                                   " Show file title
+set cc=100                                  " Show column a border for good code style
+set spell                                   " Enable spell check (may need to download language package)
+set ttyfast                                 " Speed up scrolling in Vim
+set lcs+=space:·                            " Show spaces
 
 
 " =============================================================================
-"                              search settings
+"	                       Tab and Identation settings
 " =============================================================================
-set incsearch       " find the next match as we type the search
-set hlsearch        " highlight searches by default
-set ignorecase      " ignore case when searching...
+filetype plugin indent on  " Allow auto-indenting depending on file type
+set tabstop=4              " Width that a <TAB> character displays as
+set expandtab              " Convert <TAB> key-presses to spaces
+set shiftwidth=4           " Number of spaces to use for each step of (auto)indent
+set softtabstop=4          " Backspace after pressing <TAB> will remove up to this many spaces
+set autoindent             " Copy indent from current line when starting a new line
+set smartindent            " Even better autoindent (e.g. add indent after '{')'}')
+
+
+" =============================================================================
+"                              Search Settings
+" =============================================================================
+set incsearch       " Find the next match as we type the search
+set hlsearch        " Highlight searches by default
+set ignorecase      " Ignore case when searching...
 set smartcase       " ...unless we type all capital
 
 
 " =============================================================================
-"                       vim command completion settings
+"                       VIM Command Completion Settings
 " =============================================================================
-set wildmenu                    " enable ctrl-n and ctrl-p to scroll thru matches
-set wildignore=*.o,*.obj,*~     " stuff to ignore when tab completing
+set wildmenu                    " Enable ctrl-n and ctrl-p to scroll thru matches
+set wildignore=*.o,*.obj,*~     " Stuff to ignore when tab completing
 set wildignore+=*vim/backups*
 set wildignore+=*sass-cache*
-set wildignore+=*ds_store*
+set wildignore+=*DS_Store*
 set wildignore+=vendor/rails/**
 set wildignore+=vendor/cache/**
 set wildignore+=*.gem
@@ -95,54 +95,54 @@ set wildignore+=*.png,*.jpg,*.gif
 
 
 " =============================================================================
-"                                vim plug - plugins
+"                                VIM Plug - Plugins
 " =============================================================================
-" setup plugin system
+" Setup plugin system
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
-plug 'sainnhe/sonokai'                  " theme: high contrast & vivid color scheme based on monokai pro
-plug 'morhetz/gruvbox'                  " theme: retro groove color scheme for vim
-plug 'rakr/vim-one'                     " theme: adaptation of one-light and one-dark colorschemes for vim
+Plug 'sainnhe/sonokai'                  " Theme: High Contrast & Vivid Color Scheme based on Monokai Pro
+Plug 'morhetz/gruvbox'                  " Theme: Retro groove color scheme for Vim
+Plug 'rakr/vim-one'                     " Theme: Adaptation of one-light and one-dark colorschemes for Vim
 
-plug 'mhinz/vim-startify'               " the fancy start screen for vim
-plug 'vim-airline/vim-airline'          " status/tabline for vim that's light as air
-plug 'vim-airline/vim-airline-themes'   " a collection of themes for vim-airline
-plug 'ryanoasis/vim-devicons'           " adds file type icons to vim plugins
-plug 'preservim/nerdtree'               " a tree explorer plugin for vim
-plug 'preservim/nerdcommenter'          " vim plugin for intensely nerdy commenting powers
-plug 'xuyuanp/nerdtree-git-plugin'      " a plugin of nerdtree showing git status
-plug 'sheerun/vim-polyglot'             " a collection of language packs for vim
-plug 'jiangmiao/auto-pairs'             " insert or delete brackets, parens, quotes in pair
-plug 'neoclide/coc.nvim', {'branch': 'release'} " code completion similar to vscode
-plug 'tpope/vim-fugitive'               " git wrapper for vim
-plug 'nvim-lua/plenary.nvim'            " bunch of lua functions to use with nvim
-plug 'nvim-telescope/telescope.nvim'    " pick, sort, grep, preview files
-plug 'yggdroot/indentline'              " display the indention levels with thin vertical lines
-plug 'easymotion/vim-easymotion'        " move to specific positions on screen fast
-plug 'tpope/vim-unimpaired'             " keyboard shortcuts for common vim functions
-plug 'jamshedvesuna/vim-markdown-preview' " a light vim plugin for previewing markdown files in a browser
-plug 'junegunn/goyo.vim'                " distraction free writing (zen mode)
-plug 'junegunn/limelight.vim'           " dim everything but current paragraph 
+Plug 'mhinz/vim-startify'               " The fancy start screen for Vim
+Plug 'vim-airline/vim-airline'          " Status/tabline for vim that's light as air
+Plug 'vim-airline/vim-airline-themes'   " A collection of themes for vim-airline
+Plug 'ryanoasis/vim-devicons'           " Adds file type icons to Vim plugins
+Plug 'preservim/nerdtree'               " A tree explorer plugin for vim
+Plug 'preservim/nerdcommenter'          " Vim plugin for intensely nerdy commenting powers
+Plug 'xuyuanp/nerdtree-git-plugin'      " A plugin of NERDTree showing git status
+Plug 'sheerun/vim-polyglot'             " A collection of language packs for Vim
+Plug 'jiangmiao/auto-pairs'             " Insert or delete brackets, parens, quotes in pair
+Plug 'neoclide/coc.nvim', {'branch': 'release'} " Code completion similar to VSCode
+Plug 'tpope/vim-fugitive'               " Git wrapper for VIM
+Plug 'nvim-lua/plenary.nvim'            " Bunch of Lua functions to use with NVIM
+Plug 'nvim-telescope/telescope.nvim'    " Pick, sort, grep, preview files
+Plug 'Yggdroot/indentLine'              " Display the indention levels with thin vertical lines
+Plug 'easymotion/vim-easymotion'        " Move to specific positions on screen fast
+Plug 'tpope/vim-unimpaired'             " Keyboard shortcuts for common VIM functions
+Plug 'JamshedVesuna/vim-markdown-preview' " A light Vim plugin for previewing markdown files in a browser
+Plug 'junegunn/goyo.vim'                " Distraction free writing (Zen mode)
+Plug 'junegunn/limelight.vim'           " Dim everything but current paragraph 
 
-if has('nvim') || has('patch-8.0.902')  " show a diff using vim its sign column
-  plug 'mhinz/vim-signify'
+if has('nvim') || has('patch-8.0.902')  " Show a diff using Vim its sign column
+  Plug 'mhinz/vim-signify'
 else
-  plug 'mhinz/vim-signify', { 'branch': 'legacy' }
+  Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
 endif
 
-" initialize plugin system
+" Initialize plugin system
 call plug#end()
 
 
 " =============================================================================
-"                                 customization
+"                                 Customization
 " =============================================================================
-" selecting a theme
+" Selecting a theme
 colorscheme sonokai
 
 let g:bargreybars_auto=0
 
-" style airline
+" Style Airline
 let g:airline_solorized_bg='dark'
 let g:airline_powerline_fonts=1
 let g:airline#extension#tabline#enable=1
@@ -150,69 +150,69 @@ let g:airline#extension#tabline#left_sep=' '
 let g:airline#extension#tabline#left_alt_sep='|'
 let g:airline#extension#tabline#formatter='unique_tail'
 
-" nerdtree behavior
-let nerdtreequitonopen=1
-let g:nerdspacedelims = 1                        " https://github.com/preservim/nerdcommenter#usage
-" autocmd vimenter * nerdtree | wincmd p         " start nerdtree and put the cursor back in the other window.
-let nerdtreeignore = ['\.pyc$', '^__pycache__$'] " ignore patterns are regular expression strings and seprated by comma
-autocmd bufwinenter * if getcmdwintype() == '' | silent nerdtreemirror | endif " open the existing nerdtree on each new tab
+" NERDTree Behavior
+let NERDTreeQuitOnOpen=1
+let g:NERDSpaceDelims = 1                        " https://github.com/preservim/nerdcommenter#usage
+" autocmd VimEnter * NERDTree | wincmd p         " Start NERDTree and put the cursor back in the other window.
+let NERDTreeIgnore = ['\.pyc$', '^__pycache__$'] " Ignore patterns are regular expression strings and seprated by comma
+autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif " Open the existing NERDTree on each new tab
 
-" goya (zen mode) configuration
+" Goya (Zen mode) configuration
 let g:goyo_width=100
 
-" limelight configuration
+" LimeLight configuration
 let g:limelight_default_coefficient = 0.3
 
-" easy motion configuration
-let g:easymotion_smartcase=1
-nmap s <plug>(easymotion-overwin-f)
+" Easy motion configuration
+let g:EasyMotion_smartcase=1
+nmap s <Plug>(easymotion-overwin-f)
 
-" set text conceallevel off
-autocmd filetype markdown set conceallevel=0
+" Set text conceallevel off
+autocmd FileType markdown set conceallevel=0
 set conceallevel=0
 
 
 " =============================================================================
-"                       key mapping/binding
+"                       Key Mapping/Binding
 " =============================================================================
-" this is <leader> key
+" This is <leader> key
 let mapleader = " "
 
-" map j-j and k-k to esc key
-imap jk <esc>
-imap kj <esc>
+" Map j-j and k-k to ESC key
+imap jk <Esc>
+imap kj <Esc>
 
-nmap <c-p> :nerdtreetoggle<cr>
-nmap <c-g> :git<cr>
+nmap <C-p> :NERDTreeToggle<CR>
+nmap <C-g> :Git<CR>
 
-" find files using telescope command-line sugar.
-nnoremap <leader>ff <cmd>telescope find_files<cr>
-nnoremap <leader>fg <cmd>telescope live_grep<cr>
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<CR>
+nnoremap <leader>fg <cmd>Telescope live_grep<CR>
 
-" swap lines (a = alt/option)
-nnoremap <a-j> :m .+1<cr>==
-nnoremap <a-k> :m .-2<cr>==
-inoremap <a-j> <esc>:m .+1<cr>==gi
-inoremap <a-k> <esc>:m .-2<cr>==gi
-vnoremap <a-j> :m '>+1<cr>gv=gv
-vnoremap <a-k> :m '<-2<cr>gv=gv
+" Swap Lines (A = Alt/Option)
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
 
-" use ctrl-[hjkl] to select the active window panes
-nmap <silent> <c-k> :wincmd k<cr>    " ctrl+k
-nmap <silent> <c-j> :wincmd j<cr>    " ctrl+j
-nmap <silent> <c-h> :wincmd h<cr>    " ctrl+h
-nmap <silent> <c-l> :wincmd l<cr>    " ctrl+l
+" Use CTRL-[hjkl] to select the active window panes
+nmap <silent> <c-k> :wincmd k<CR>    " CTRL+k
+nmap <silent> <c-j> :wincmd j<CR>    " CTRL+j
+nmap <silent> <c-h> :wincmd h<CR>    " CTRL+h
+nmap <silent> <c-l> :wincmd l<CR>    " CTRL+l
 
-" replace ctrl-w with "/"
-nnoremap <silent> <bslash> :wincmd w<cr>
+" Replace CTRL-W with "/"
+nnoremap <silent> <Bslash> :wincmd w<CR>
 
-" select all in current file
-nnoremap <leader>a ggvg
+" Select all in current file
+nnoremap <leader>a ggVG
 
 
 " ==============================================================
-"                specific file syntax highlight
+"                Specific File Syntax Highlight
 " ==============================================================
-" usage: au bufnewfile,bufread *<name of file with wildcards* setf <file type>
+" Usage: au BufNewFile,BufRead *<NAME OF FILE WITH WILDCARDS* setf <FILE TYPE>
 
-au bufnewfile,bufread *jenkinsfile* setf groovy
+au BufNewFile,BufRead *Jenkinsfile* setf groovy
