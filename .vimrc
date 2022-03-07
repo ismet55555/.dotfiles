@@ -34,16 +34,16 @@ set nocompatible"
 " =============================================================================
 "                           General Settings
 " =============================================================================
-set number           " Show line numbers
-syntax on            " Turn on syntax highlighting
-set encoding=utf-8   " Set encoding to UTF-8 (default was "latin1")
-set foldenable       " Enable folding
-set visualbell       " Blink cursor on error instead of beeping (grr)
-set ruler            " Show line and column number of the cursor on right side of statusline
-set mouse=a          " Enable mouse support (might not work well on Mac OS X)
-set autoread         " Reload files changed outside vim
-"set cursorline      " Highlight current line (underline)
-set conceallevel=0   " Remove any text/code concealment, text is shown normally
+set number			    " Show line numbers
+syntax on 		     	" Turn on syntax highlighting
+set encoding=utf-8      " Set encoding to UTF-8 (default was "latin1")
+set foldenable 		    " Enable folding
+set visualbell 		    " Blink cursor on error instead of beeping (grr)
+set ruler		        " Show line and column number of the cursor on right side of statusline
+set mouse=a			    " Enable mouse support (might not work well on Mac OS X)
+set autoread		    " Reload files changed outside vim
+"set cursorline 		" Highlight current line (underline)
+set conceallevel=0      " Remove any text/code concealment, text is shown normally
 
 set clipboard=unnamedplus                   " Enables the clipboard between Vim/Neovim and other applications.
 set completeopt=noinsert,menuone,noselect   " Modifies the auto-complete menu to behave more like an IDE.
@@ -120,9 +120,9 @@ Plug 'nvim-telescope/telescope.nvim'    " Pick, sort, grep, preview files
 Plug 'Yggdroot/indentLine'              " Display the indention levels with thin vertical lines
 Plug 'easymotion/vim-easymotion'        " Move to specific positions on screen fast
 Plug 'tpope/vim-unimpaired'             " Keyboard shortcuts for common VIM functions
-Plug 'JamshedVesuna/vim-markdown-preview' " A light Vim plugin for previewing markdown files in a browser
 Plug 'junegunn/goyo.vim'                " Distraction free writing (Zen mode)
 Plug 'junegunn/limelight.vim'           " Dim everything but current paragraph 
+Plug 'pseewald/vim-anyfold'             " Folding and motion based on indentation
 
 if has('nvim') || has('patch-8.0.902')  " Show a diff using Vim its sign column
   Plug 'mhinz/vim-signify'
@@ -150,26 +150,36 @@ let g:airline#extension#tabline#left_sep=' '
 let g:airline#extension#tabline#left_alt_sep='|'
 let g:airline#extension#tabline#formatter='unique_tail'
 
-" NERDTree Behavior
+" NERDTree Configuration
 let NERDTreeQuitOnOpen=1
 let g:NERDSpaceDelims = 1                        " https://github.com/preservim/nerdcommenter#usage
-" autocmd VimEnter * NERDTree | wincmd p         " Start NERDTree and put the cursor back in the other window.
 let NERDTreeIgnore = ['\.pyc$', '^__pycache__$'] " Ignore patterns are regular expression strings and seprated by comma
 autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif " Open the existing NERDTree on each new tab
 
-" Goya (Zen mode) configuration
+" Goya (Zen mode) Configuration
 let g:goyo_width=100
 
-" LimeLight configuration
+" LimeLight Configuration
 let g:limelight_default_coefficient = 0.3
 
-" Easy motion configuration
+" EasyMotion Configuration
 let g:EasyMotion_smartcase=1
 nmap s <Plug>(easymotion-overwin-f)
 
-" Set text conceallevel off
+" Set Text conceallevel Off
 autocmd FileType markdown set conceallevel=0
 set conceallevel=0
+
+" Anyfold Plugin Configuration
+" Folding: 
+"    zr/zR - Reduce fold level
+"    zm/zM - Increase fold level
+"    zc/zC - Close fold
+"    zo/zO - Open fold
+"    za/zA - Toggle fold
+"    Capital letters = recursive action
+autocmd Filetype * AnyFoldActivate       " Activate vim-anyfold for all filetypes
+set foldlevel=99
 
 
 " =============================================================================
