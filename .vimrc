@@ -219,6 +219,9 @@ nnoremap <silent> <Bslash> :wincmd w<CR>
 " Select all in current file
 nnoremap <leader>a ggVG
 
+" Enter blank line without leaving normal mode
+nmap <CR> o<Esc>
+
 
 " ==============================================================
 "                Specific File Syntax Highlight
