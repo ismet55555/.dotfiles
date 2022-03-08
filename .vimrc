@@ -34,16 +34,16 @@ set nocompatible"
 " =============================================================================
 "                           General Settings
 " =============================================================================
-set number			    " Show line numbers
-syntax on 		     	" Turn on syntax highlighting
-set encoding=utf-8      " Set encoding to UTF-8 (default was "latin1")
-set foldenable 		    " Enable folding
-set visualbell 		    " Blink cursor on error instead of beeping (grr)
-set ruler		        " Show line and column number of the cursor on right side of statusline
-set mouse=a			    " Enable mouse support (might not work well on Mac OS X)
-set autoread		    " Reload files changed outside vim
-"set cursorline 		" Highlight current line (underline)
-set conceallevel=0      " Remove any text/code concealment, text is shown normally
+set number          " Show line numbers
+syntax on           " Turn on syntax highlighting
+set encoding=utf-8  " Set encoding to UTF-8 (default was "latin1")
+set foldenable      " Enable folding
+set visualbell      " Blink cursor on error instead of beeping (grr)
+set ruler           " Show line and column number of the cursor on right side of statusline
+set mouse=a         " Enable mouse support (might not work well on Mac OS X)
+set autoread        " Reload files changed outside vim
+"set cursorline     " Highlight current line (underline)
+set conceallevel=0  " Remove any text/code concealment, text is shown normally
 
 set clipboard=unnamedplus                   " Enables the clipboard between Vim/Neovim and other applications.
 set completeopt=noinsert,menuone,noselect   " Modifies the auto-complete menu to behave more like an IDE.
