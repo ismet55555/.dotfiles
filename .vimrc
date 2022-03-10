@@ -188,18 +188,24 @@ set foldlevel=99
 " This is <leader> key
 let mapleader = " "
 
-" Map j-j and k-k to ESC key
-imap jk <Esc>
-imap kj <Esc>
+" Save a file in normal and insert mode
+nnoremap <C-S> :update<CR>
+inoremap <C-S> <Esc>:update<CR>gi
 
+" Map j-j and k-k to ESC key
+imap jj <Esc>
+
+" Open NERDTRee file manager UI
 nmap <C-p> :NERDTreeToggle<CR>
+
+" Open Git Plugin UI
 nmap <C-g> :Git<CR>
 
-" Find files using Telescope command-line sugar.
+" Find files using Telescope
 nnoremap <leader>ff <cmd>Telescope find_files<CR>
 nnoremap <leader>fg <cmd>Telescope live_grep<CR>
 
-" Swap Lines (A = Alt/Option)
+" Swap Lines up and down (A = Alt/Option)
 nnoremap <A-j> :m .+1<CR>==
 nnoremap <A-k> :m .-2<CR>==
 inoremap <A-j> <Esc>:m .+1<CR>==gi
