@@ -107,7 +107,7 @@
       "KC_NO",
       "KC_NO",
       "MO(1)",
-      "MO(1)",
+      "KC_RGUI",
       "KC_RCTL",
       "KC_LEFT",
       "KC_RGHT"
@@ -291,7 +291,7 @@
       "KC_NO",
       "KC_NO",
       "MO(3)",
-      "MO(3)",
+      "KC_RGUI",
       "KC_RCTL",
       "KC_LEFT",
       "KC_RGHT"
