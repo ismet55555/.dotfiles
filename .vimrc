@@ -54,7 +54,8 @@ set title                                   " Show file title
 set cc=100                                  " Show column a border for good code style
 set spell                                   " Enable spell check (may need to download language package)
 set ttyfast                                 " Speed up scrolling in Vim
-set lcs+=space:·                            " Show spaces
+set lcs+=space:·                            " Set the white space character display
+set list                                    " Show white space character
 
 
 " =============================================================================
