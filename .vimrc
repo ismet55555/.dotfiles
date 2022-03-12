@@ -189,10 +189,10 @@ set foldlevel=99
 let mapleader = " "
 
 " Save a file in normal and insert mode
-nnoremap <C-S> :update<CR>
-inoremap <C-S> <Esc>:update<CR>gi
+nnoremap <silent> <C-S> :update<CR>
+inoremap <silent> <C-S> <Esc>:update<CR>gi
 
-" Map j-j and k-k to ESC key
+" Map j-j to ESC key
 imap jj <Esc>
 
 " Open NERDTRee file manager UI
