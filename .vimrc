@@ -234,6 +234,6 @@ nmap <CR> o<Esc>
 " ==============================================================
 "                Specific File Syntax Highlight
 " ==============================================================
-" Usage: au BufNewFile,BufRead *<NAME OF FILE WITH WILDCARDS* setf <FILE TYPE>
+" Usage: autocmd BufNewFile,BufRead *<NAME OF FILE WITH WILDCARDS* set filetype=<FILE TYPE>
 
-au BufNewFile,BufRead *Jenkinsfile* setf groovy
+autocmd BufNewFile,BufRead *Jenkinsfile* set filetype=groovy
