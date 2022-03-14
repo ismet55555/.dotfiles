@@ -124,6 +124,7 @@ Plug 'tpope/vim-unimpaired'             " Keyboard shortcuts for common VIM func
 Plug 'junegunn/goyo.vim'                " Distraction free writing (Zen mode)
 Plug 'junegunn/limelight.vim'           " Dim everything but current paragraph 
 Plug 'pseewald/vim-anyfold'             " Folding and motion based on indentation
+Plug 'tpope/vim-surround'               " Delete (ds)/Change(cs)/Add(ys) surrounding characters
 
 if has('nvim') || has('patch-8.0.902')  " Show a diff using Vim its sign column
   Plug 'mhinz/vim-signify'
