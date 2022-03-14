@@ -139,6 +139,10 @@ call plug#end()
 " =============================================================================
 "                                 Customization
 " =============================================================================
+" Highlight extra white space (this must be before 'colorscheme')
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=darkgreen guibg=lightgreen
+match ExtraWhitespace /\s\+$/
+
 " Selecting a theme
 colorscheme sonokai
 
