@@ -1,8 +1,8 @@
 "  _    ________  ___
 " | |  / /  _/  |/  /
-" | | / // // /|_/ / 
-" | |/ // // /  / /  
-" |___/___/_/  /_/                     
+" | | / // // /|_/ /
+" | |/ // // /  / /
+" |___/___/_/  /_/
 "
 " =============================================================================
 "
@@ -122,7 +122,7 @@ Plug 'Yggdroot/indentLine'              " Display the indention levels with thin
 Plug 'easymotion/vim-easymotion'        " Move to specific positions on screen fast
 Plug 'tpope/vim-unimpaired'             " Keyboard shortcuts for common VIM functions
 Plug 'junegunn/goyo.vim'                " Distraction free writing (Zen mode)
-Plug 'junegunn/limelight.vim'           " Dim everything but current paragraph 
+Plug 'junegunn/limelight.vim'           " Dim everything but current paragraph
 Plug 'pseewald/vim-anyfold'             " Folding and motion based on indentation
 Plug 'tpope/vim-surround'               " Delete (ds)/Change(cs)/Add(ys) surrounding characters
 
@@ -178,7 +178,7 @@ autocmd FileType markdown set conceallevel=0
 set conceallevel=0
 
 " Anyfold Plugin Configuration
-" Folding: 
+" Folding:
 "    zr/zR - Reduce fold level
 "    zm/zM - Increase fold level
 "    zc/zC - Close fold
@@ -242,3 +242,4 @@ nmap <CR> o<Esc>
 " Usage: autocmd BufNewFile,BufRead *<NAME OF FILE WITH WILDCARDS* set filetype=<FILE TYPE>
 
 autocmd BufNewFile,BufRead *Jenkinsfile* set filetype=groovy
+
