@@ -143,9 +143,10 @@ call plug#end()
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=darkgreen guibg=lightgreen
 match ExtraWhitespace /\s\+$/
 
-" Selecting a theme
+" Selecting a VIM color theme
 colorscheme sonokai
 
+" Remove gray bars from maximised gvim windows, on Windows
 let g:bargreybars_auto=0
 
 " Style Airline
