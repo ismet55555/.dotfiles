@@ -212,7 +212,7 @@ nmap <C-g> :Git<CR>
 nnoremap <leader>ff <cmd>Telescope find_files<CR>
 nnoremap <leader>fg <cmd>Telescope live_grep<CR>
 
-" Swap Lines up and down (A = Alt/Option)
+" Swap Lines up and down with ALT-[hjkl]
 nnoremap <A-j> :m .+1<CR>==
 nnoremap <A-k> :m .-2<CR>==
 inoremap <A-j> <Esc>:m .+1<CR>==gi
@@ -220,13 +220,13 @@ inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 
-" Use CTRL-[hjkl] to select the active window panes
+" Use CTRL-[hjkl] to navigate window panes
 nmap <silent> <c-k> :wincmd k<CR>    " CTRL+k
 nmap <silent> <c-j> :wincmd j<CR>    " CTRL+j
 nmap <silent> <c-h> :wincmd h<CR>    " CTRL+h
 nmap <silent> <c-l> :wincmd l<CR>    " CTRL+l
 
-" Replace CTRL-W with "/"
+" Replace CTRL-W with "/" for cycling window panes
 nnoremap <silent> <Bslash> :wincmd w<CR>
 
 " Select all in current file
