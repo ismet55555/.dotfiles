@@ -13,20 +13,22 @@
 " Install VIM-Plug package manager
 "   - https://github.com/junegunn/vim-plug
 "
-" Place this configuration file into the following directory:
+" Place these configurations into the following file:
 "   - NeoVim
-"       - Windows:     ~\AppData\Local\nvim\<HERE>
-"       - MacOS/Linux: ~/.config/nvim/<HERE>
+"       - Windows:     ~\AppData\Local\nvim\init.vim
+"       - MacOS/Linux: ~/.config/nvim/init.vim
 "   - Vim
 "       - ~/.vimrc
 "
-" Open NeoVim (nvim)/ Vim (vim) and install all listed packages
-"   - After opening neovim/vim, run:   :PlugInstall
+" Open NeoVim (nvim) or Vim (vim) and install all listed packages
+"   - After opening neovim/vim, run:
+"      - :PlugClean
+"      - :PlugInstall
 "   - Run this anytime you modify, add, remove plugins
 "
 " =============================================================================
 
-" This must be first
+" This following set command must be first
 "    https://vi.stackexchange.com/questions/25149/advice-to-add-set-nocompatible-as-first-line-of-vimrc
 set nocompatible"
 
@@ -34,16 +36,16 @@ set nocompatible"
 " =============================================================================
 "                           General Settings
 " =============================================================================
-set number          " Show line numbers
-syntax on           " Turn on syntax highlighting
-set encoding=utf-8  " Set encoding to UTF-8 (default was "latin1")
-set foldenable      " Enable folding
-set visualbell      " Blink cursor on error instead of beeping (grr)
-set ruler           " Show line and column number of the cursor on right side of statusline
-set mouse=a         " Enable mouse support (might not work well on Mac OS X)
-set autoread        " Reload files changed outside vim
-"set cursorline     " Highlight current line (underline)
-set conceallevel=0  " Remove any text/code concealment, text is shown normally
+set number           " Show line numbers
+syntax on            " Turn on syntax highlighting
+set encoding=utf-8   " Set encoding to UTF-8 (default was "latin1")
+set foldenable       " Enable folding
+set visualbell       " Blink cursor on error instead of beeping (grr)
+set ruler            " Show line and column number of the cursor on right side of statusline
+set mouse=a          " Enable mouse support (might not work well on Mac OS X)
+set autoread         " Reload files changed outside vim
+"set cursorline      " Highlight current line (underline)
+set conceallevel=0   " Remove any text/code concealment, text is shown normally
 
 set clipboard=unnamedplus                   " Enables the clipboard between Vim/Neovim and other applications.
 set completeopt=noinsert,menuone,noselect   " Modifies the auto-complete menu to behave more like an IDE.
@@ -61,29 +63,29 @@ set list                                    " Show white space character
 " =============================================================================
 "	                       Tab and Identation settings
 " =============================================================================
-filetype plugin indent on  " Allow auto-indenting depending on file type
-set tabstop=4              " Width that a <TAB> character displays as
-set expandtab              " Convert <TAB> key-presses to spaces
-set shiftwidth=4           " Number of spaces to use for each step of (auto)indent
-set softtabstop=4          " Backspace after pressing <TAB> will remove up to this many spaces
-set autoindent             " Copy indent from current line when starting a new line
-set smartindent            " Even better autoindent (e.g. add indent after '{')'}')
+filetype plugin indent on   " Allow auto-indenting depending on file type
+set tabstop=4               " Width that a <TAB> character displays as
+set expandtab               " Convert <TAB> key-presses to spaces
+set shiftwidth=4            " Number of spaces to use for each step of (auto)indent
+set softtabstop=4           " Backspace after pressing <TAB> will remove up to this many spaces
+set autoindent              " Copy indent from current line when starting a new line
+set smartindent             " Even better autoindent (e.g. add indent after '{')'}')
 
 
 " =============================================================================
 "                              Search Settings
 " =============================================================================
-set incsearch       " Find the next match as we type the search
-set hlsearch        " Highlight searches by default
-set ignorecase      " Ignore case when searching...
-set smartcase       " ...unless we type all capital
+set incsearch      " Find the next match as we type the search
+set hlsearch       " Highlight searches by default
+set ignorecase     " Ignore case when searching...
+set smartcase      " ...unless we type all capital
 
 
 " =============================================================================
 "                       VIM Command Completion Settings
 " =============================================================================
-set wildmenu                    " Enable ctrl-n and ctrl-p to scroll thru matches
-set wildignore=*.o,*.obj,*~     " Stuff to ignore when tab completing
+set wildmenu                        " Enable ctrl-n and ctrl-p to scroll thru matchesf
+set wildignore=*.o,*.obj,*~         " Stuff to ignore when tab completing
 set wildignore+=*vim/backups*
 set wildignore+=*sass-cache*
 set wildignore+=*DS_Store*
@@ -92,7 +94,6 @@ set wildignore+=vendor/cache/**
 set wildignore+=*.gem
 set wildignore+=log/**
 set wildignore+=tmp/**
-set wildignore+=*.png,*.jpg,*.gif
 
 
 " =============================================================================
@@ -123,14 +124,21 @@ Plug 'easymotion/vim-easymotion'        " Move to specific positions on screen f
 Plug 'tpope/vim-unimpaired'             " Keyboard shortcuts for common VIM functions
 Plug 'junegunn/goyo.vim'                " Distraction free writing (Zen mode)
 Plug 'junegunn/limelight.vim'           " Dim everything but current paragraph
-Plug 'pseewald/vim-anyfold'             " Folding and motion based on indentation
+Plug 'pseewald/vim-anyfold'             " Text folding and motion based on indentation
 Plug 'tpope/vim-surround'               " Delete (ds)/Change(cs)/Add(ys) surrounding characters
+Plug 'vim-syntastic/syntastic'          " Syntax checking
 
 if has('nvim') || has('patch-8.0.902')  " Show a diff using Vim its sign column
   Plug 'mhinz/vim-signify'
 else
   Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
 endif
+
+" Python related
+Plug 'tmhedberg/SimpylFold'             " Python code folding for VIM
+Plug 'nvie/vim-flake8'                  " Python PEP-8 checking
+
+
 
 " Initialize plugin system
 call plug#end()
