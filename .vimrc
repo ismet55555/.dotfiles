@@ -13,6 +13,10 @@
 " Install VIM-Plug package manager
 "   - https://github.com/junegunn/vim-plug
 "
+" Install node
+"   - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+"   -  nvm install --lts
+"
 " Place these configurations into the following file:
 "   - NeoVim
 "       - Windows:     ~\AppData\Local\nvim\init.vim
