@@ -161,6 +161,7 @@ apt -y install docker.io
 systemctl start docker
 systemctl enable docker
 systemctl status docker
+# sudo usermod -aG docker $USER  # plus logout/login
 
 # bat (fancy cat)
 echo
