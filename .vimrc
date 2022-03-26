@@ -113,7 +113,6 @@ Plug 'sheerun/vim-polyglot'             " A collection of language packs for Vim
 Plug 'jiangmiao/auto-pairs'             " Insert or delete brackets, parens, quotes in pair
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Code completion similar to VSCode
 Plug 'nvim-lua/plenary.nvim'            " Bunch of Lua functions to use with NVIM
-Plug 'nvim-telescope/telescope.nvim'    " Pick, sort, grep, preview files
 Plug 'Yggdroot/indentLine'              " Display the indention levels with thin vertical lines
 Plug 'easymotion/vim-easymotion'        " Move to specific positions on screen fast
 Plug 'tpope/vim-unimpaired'             " Keyboard shortcuts for common VIM functions
@@ -125,7 +124,14 @@ Plug 'pseewald/vim-anyfold'             " Folding and motion based on indentatio
 Plug 'brooth/far.vim'                   " Find and replace help
 Plug 'vim-syntastic/syntastic'          " Syntax checking
 Plug 'mhinz/vim-signify'                " Show a diff using Vim its sign column
-Plug 'tpope/vim-obsession'              " Save current VIM session/layout
+Plug 'tpope/vim-obsession'              " Save current VIM session/layout (:Obsess)
+
+" Fuzzy Finder (Search)
+"   - '     : Exact match ('Dockerfile)
+"   - |     : Or operator (yo | blah)
+"   - <Tab> : Select multiple files
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " Python Specific Plugins
 Plug 'tmhedberg/SimpylFold'             " Python code folding for VIM
@@ -169,6 +175,10 @@ let g:airline#extension#tabline#enable=1          " Enable smarter tab line
 let g:airline#extension#tabline#left_sep=' '      " Tabline left seperator char
 let g:airline#extension#tabline#left_alt_sep='|'  " Tabline default seperator
 let g:airline#extension#tabline#formatter='unique_tail_improved'
+
+" Fuzzy Finder Search Configurations
+"    Install fzf: https://github.com/BurntSushi/ripgrep
+command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
 " NERDTree Configuration
 let NERDTreeQuitOnOpen=1
@@ -227,9 +237,14 @@ nmap <C-p> :NERDTreeToggle<CR>
 " Open Git Plugin UI
 nmap <C-g> :Git<CR>
 
-" Find files using Telescope
-nnoremap <leader>ff <cmd>Telescope find_files<CR>
-nnoremap <leader>fg <cmd>Telescope live_grep<CR>
+" Fuzzy Finder Search
+"    https://github.com/junegunn/fzf.vim#commands 
+nnoremap <silent> <leader>ff :Files<CR>
+nnoremap <silent> <leader>fgf :GFiles<CR>
+nnoremap <silent> <leader>fg :Rg<CR>
+nnoremap <silent> <Leader>fc :Commits<CR>
+nnoremap <silent> <Leader>fw :Windows<CR>
+nnoremap <silent> <Leader>fh :History<CR>
 
 " Swap Lines up and down (A = Alt/Option)
 nnoremap <A-j> :m .+1<CR>==
@@ -261,3 +276,4 @@ nmap <CR> o<Esc>
 " Usage: autocmd BufNewFile,BufRead *<NAME OF FILE WITH WILDCARDS* set filetype=<FILE TYPE>
 
 autocmd BufNewFile,BufRead *Jenkinsfile* set filetype=groovy
+
