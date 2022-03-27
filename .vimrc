@@ -13,6 +13,11 @@
 " Install VIM-Plug package manager
 "   - https://github.com/junegunn/vim-plug
 "
+" (NeoVim only) Install node for syntax checking and auto-completion
+"   - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+"   - nvm install node
+"   - Reload shell or source .bashrc/.zshrc
+"
 " Place this configuration file into the following directory:
 "   - NeoVim
 "       - Windows:     ~\AppData\Local\nvim\<HERE>
@@ -42,13 +47,11 @@ set visualbell      " Blink cursor on error instead of beeping (grr)
 set ruler           " Show line and column number of the cursor on right side of statusline
 set mouse=a         " Enable mouse support (might not work well on Mac OS X)
 set autoread        " Reload files changed outside vim
-"set cursorline     " Highlight current line (underline)
 set conceallevel=0  " Remove any text/code concealment, text is shown normally
 
 set clipboard=unnamedplus                   " Enables the clipboard between Vim/Neovim and other applications.
 set completeopt=noinsert,menuone,noselect   " Modifies the auto-complete menu to behave more like an IDE.
 set hidden                                  " Hide unused buffers
-set inccommand=split                        " Show replacements in a split screen
 set splitbelow splitright                   " Change the split screen behavior
 set title                                   " Show file title
 set cc=100                                  " Show column a border for good code style
@@ -111,7 +114,6 @@ Plug 'preservim/nerdcommenter'          " Vim plugin for intensely nerdy comment
 Plug 'xuyuanp/nerdtree-git-plugin'      " A plugin of NERDTree showing git status
 Plug 'sheerun/vim-polyglot'             " A collection of language packs for Vim
 Plug 'jiangmiao/auto-pairs'             " Insert or delete brackets, parens, quotes in pair
-Plug 'neoclide/coc.nvim', {'branch': 'release'} " Code completion similar to VSCode
 Plug 'nvim-lua/plenary.nvim'            " Bunch of Lua functions to use with NVIM
 Plug 'Yggdroot/indentLine'              " Display the indention levels with thin vertical lines
 Plug 'easymotion/vim-easymotion'        " Move to specific positions on screen fast
@@ -122,9 +124,9 @@ Plug 'junegunn/goyo.vim'                " Distraction free writing (Zen mode)
 Plug 'junegunn/limelight.vim'           " Dim everything but current paragraph
 Plug 'pseewald/vim-anyfold'             " Folding and motion based on indentation
 Plug 'brooth/far.vim'                   " Find and replace help
-Plug 'vim-syntastic/syntastic'          " Syntax checking
 Plug 'mhinz/vim-signify'                " Show a diff using Vim its sign column
 Plug 'tpope/vim-obsession'              " Save current VIM session/layout (:Obsess)
+Plug 'vim-syntastic/syntastic'          " Syntax checking
 
 " Fuzzy Finder (Search)
 "   - '     : Exact match ('Dockerfile)
@@ -139,6 +141,9 @@ Plug 'nvie/vim-flake8'                  " Python PEP-8 checking
 
 " NeoVim Specify Plugins
 if has('nvim')
+  " Nodejs extension host for vim & neovim, load extensions like VSCode and host language servers
+  Plug 'neoclide/coc.nvim', {'branch': 'release'} 
+
   " File parser framework
   "   - Install support for specific language:  :TSInstall <LANGAUGE>
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
