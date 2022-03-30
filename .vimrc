@@ -11,7 +11,7 @@
 "   - https://github.com/neovim/neovim/releases
 "
 " Install VIM-Plug package manager
-"   - https://github.com/junegunn/vim-plug
+"   - https://github.com/junegunn/vim-plug#installation
 "
 " (NeoVim only) Install node for syntax checking and auto-completion
 "   - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
