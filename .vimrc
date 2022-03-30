@@ -265,6 +265,12 @@ nmap <silent> <c-j> :wincmd j<CR>    " CTRL+j
 nmap <silent> <c-h> :wincmd h<CR>    " CTRL+h
 nmap <silent> <c-l> :wincmd l<CR>    " CTRL+l
 
+" Resize window panes
+nnoremap <silent> <leader>+ :resize +5<CR>
+nnoremap <silent> <leader>- :resize -5<CR>
+nnoremap <silent> <leader>< :vertical:resize -5<CR>
+nnoremap <silent> <leader>> :vertical:resize +5<CR>
+
 " Replace CTRL-W with "/"
 nnoremap <silent> <Bslash> :wincmd w<CR>
 
