@@ -58,6 +58,7 @@ set cc=100                                  " Show column a border for good code
 set spell                                   " Enable spell check (may need to download language package)
 set ttyfast                                 " Speed up scrolling in Vim
 set lcs+=space:·                            " Show spaces
+set nowrap                                  " Disable line/text wrapping
 
 
 " =============================================================================
@@ -233,7 +234,7 @@ let mapleader = " "
 nnoremap <silent> <C-S> :update<CR>
 inoremap <silent> <C-S> <Esc>:update<CR>gi
 
-" Map j-j and k-k to ESC key
+" Map j-j to ESC key
 imap jj <Esc>
 
 " Open NERDTRee file manager UI
