@@ -21,7 +21,7 @@ alias lt3='tree -L 3 -a'
 alias cd2='cd ../..'
 alias cd3='cd ../../..'
 alias cd4='cd ../../..'
-alias cdproj='cd ~/Projects'
+alias cdp='cd ~/Projects'
 
 # Create a directory and cd into it
 function mkdircd () { mkdir -p "$@" && eval cd "\"\$$#\""; }
@@ -36,13 +36,6 @@ alias ccc='xclip -sel clip'
 # Search history for specific keyword
 alias history-find="cat ~/.bash_history | grep -T -E"
 
-# Check Internet Connection
-alias internet='~/.bashrc_scripts/check_internet.sh'
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=critical -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
 # git add and commit
 alias gitac='git add . && git commit -m "minor quick changes"'
 
@@ -52,11 +45,22 @@ alias arp="sudo arp-scan -l"
 # Send a file with croc
 alias croc-send="croc send --code ismet-mail"
 
+# Ignore potential python 2
+alias python="python3"
+
+# Create live server for current directory
+alias serve="python3 -m http.server"
+
 # Creating a python3 virtual envirnoment
 alias mkpyvenv="python3 -m venv env; source env/bin/activate"
+alias env-on="source env/bin/activate"
+alias env-off="deactivate"
 
 # Substituting exa for ls
 alias ls="exa"
 
 # Subsituting bat for cat
 alias cat="bat"
+
+# Reload the shell
+alias reload-shell="exec $SHELL"
