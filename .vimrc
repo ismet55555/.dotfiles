@@ -16,7 +16,12 @@
 " (NeoVim only) Install node for syntax checking and auto-completion
 "   - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 "   - nvm install node
-"   - Reload shell or source .bashrc/.zshrc
+"   - Reload shell: exec $SHELL
+"
+" Install Universal ctags and setup (use with CTRL+])
+"   - https://github.com/universal-ctags/ctags#the-latest-build-and-package
+"   - Reload shell:     exec $SHELL
+"   - In project root:  ctags -R --exclude=".git" .
 "
 " Place this configuration file into the following directory:
 "   - NeoVim
