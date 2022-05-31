@@ -53,17 +53,18 @@ set ruler           " Show line and column number of the cursor on right side of
 set mouse=a         " Enable mouse support (might not work well on Mac OS X)
 set autoread        " Reload files changed outside vim
 set conceallevel=0  " Remove any text/code concealment, text is shown normally
+set lazyredraw      " Don't redraw while executing macros (good performance config)
 
 set clipboard=unnamedplus                   " Enables the clipboard between Vim/Neovim and other applications.
 set completeopt=noinsert,menuone,noselect   " Modifies the auto-complete menu to behave more like an IDE.
 set hidden                                  " Hide unused buffers
 set splitbelow splitright                   " Change the split screen behavior
 set title                                   " Show file title
-set cc=100                                  " Show column a border for good code style
-set spell                                   " Enable spell check (may need to download language package)
+set colorcolumn=100                         " Show column a border for good code style
 set ttyfast                                 " Speed up scrolling in Vim
 set lcs+=space:·                            " Show spaces
 set nowrap                                  " Disable line/text wrapping
+" set spell                                   " Enable spell check (may need to download language package)
 
 
 " =============================================================================
@@ -74,7 +75,7 @@ set tabstop=4              " Width that a <TAB> character displays as
 set expandtab              " Convert <TAB> key-presses to spaces
 set shiftwidth=4           " Number of spaces to use for each step of (auto)indent
 set softtabstop=4          " Backspace after pressing <TAB> will remove up to this many spaces
-set autoindent             " Copy indent from current line when starting a new line
+" set autoindent             " Copy indent from current line when starting a new line
 set smartindent            " Even better autoindent (e.g. add indent after '{')'}')
 
 
@@ -109,12 +110,14 @@ set wildignore+=*.png,*.jpg,*.gif
 " Setup plugin system
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
-Plug 'sainnhe/sonokai'                  " Theme: High Contrast & Vivid Color Scheme based on Monokai Pro
+" Plug 'sainnhe/sonokai'                  " Theme: High Contrast & Vivid Color Scheme based on Monokai Pro
+Plug 'cocopon/iceberg.vim'              " Bluish color scheme for Vim
 
 Plug 'mhinz/vim-startify'               " The fancy start screen for Vim
 Plug 'vim-airline/vim-airline'          " Status/tabline for vim that's light as air
 Plug 'vim-airline/vim-airline-themes'   " A collection of themes for vim-airline
-Plug 'ryanoasis/vim-devicons'           " Adds file type icons to Vim plugins
+Plug 'kyazdani42/nvim-web-devicons'     " Adds various icons to Vim plugins
+Plug 'ryanoasis/vim-devicons'           " Adds various icons to Vim plugins
 Plug 'preservim/nerdtree'               " A tree explorer plugin for vim
 Plug 'preservim/nerdcommenter'          " Vim plugin for intensely nerdy commenting powers
 Plug 'xuyuanp/nerdtree-git-plugin'      " A plugin of NERDTree showing git status
@@ -135,9 +138,11 @@ Plug 'tpope/vim-obsession'              " Save current VIM session/layout (:Obse
 Plug 'vim-syntastic/syntastic'          " Syntax checking
 
 " Fuzzy Finder (Search)
-"   - '     : Exact match ('Dockerfile)
-"   - |     : Or operator (yo | blah)
-"   - <Tab> : Select multiple files
+"   - '       : Exact match (ie. 'Dockerfile)
+"   - |       : Or operator (ie. yo | blah)
+"   - <Tab>   : Select multiple files
+"   - Split   : CTRL-v  OR  CTRL-x
+"   - New Tab : CTRL-t
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
@@ -148,7 +153,7 @@ Plug 'nvie/vim-flake8'                  " Python PEP-8 checking
 " NeoVim Specify Plugins
 if has('nvim')
   " Nodejs extension host for vim & neovim, load extensions like VSCode and host language servers
-  Plug 'neoclide/coc.nvim', {'branch': 'release'} 
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
   " File parser framework
   "   - Install support for specific language:  :TSInstall <LANGAUGE>
@@ -156,10 +161,17 @@ if has('nvim')
 
   " Config for build-in LSP client
   "   - Run:  npm i -g pyright
+  Plug 'williamboman/nvim-lsp-installer'
   Plug 'neovim/nvim-lspconfig'
 
   " Auto completion Lua plugin for NVIM
   Plug 'hrsh7th/nvim-compe'
+
+  " Improve LSP UI
+  Plug 'glepnir/lspsaga.nvim'
+
+  " Pretty list of showing diagnostics, refs, fixes, etc
+  Plug 'folke/trouble.nvim'
 endif
 
 " Initialize plugin system
@@ -174,18 +186,24 @@ autocmd ColorScheme * highlight ExtraWhitespace ctermbg=darkblue guibg=lightblue
 match ExtraWhitespace /\s\+$/
 
 " Selecting a theme
-colorscheme sonokai
+" colorscheme sonokai
+colorscheme iceberg
+
+" Set background to transparent
+set background=dark
+hi Normal guibg=NONE ctermbg=NONE
 
 " Keep window background in sync with color scheme
 let g:bargreybars_auto=0
 
 " Style Airline
-let g:airline_theme='deus'
-let g:airline_powerline_fonts=1                   " Get powerline symbols
-let g:airline#extension#tabline#enable=1          " Enable smarter tab line
-let g:airline#extension#tabline#left_sep=' '      " Tabline left seperator char
-let g:airline#extension#tabline#left_alt_sep='|'  " Tabline default seperator
-let g:airline#extension#tabline#formatter='unique_tail_improved'
+let g:airline_theme='iceberg'
+let g:airline_powerline_fonts=1                      " Get powerline symbols
+let g:airline#extensions#tabline#show_close_button=0 " Remove 'X' at the end of tabline
+let g:airline#extensions#tabline#enable=1            " Enable smarter tab line
+let g:airline#extensions#tabline#left_sep=' '        " Tabline left seperator char
+let g:airline#extensions#tabline#left_alt_sep='|'    " Tabline default seperator
+let g:airline#extensions#tabline#formatter='unique_tail_improved'
 
 " Fuzzy Finder Search Configurations
 "    Install fzf: https://github.com/BurntSushi/ripgrep
@@ -225,7 +243,9 @@ set foldlevel=99
 " NeoVim Specify Configurations
 if has('nvim')
   " Adding pyright static type checker for Python
-  lua require'lspconfig'.pyright.setup{}
+  lua require("nvim-lsp-installer").setup{}
+  lua require('lspconfig').pyright.setup{}
+  lua require("trouble").setup{}
 endif
 
 
@@ -257,13 +277,13 @@ nnoremap <silent> <Leader>fc :Commits<CR>
 nnoremap <silent> <Leader>fw :Windows<CR>
 nnoremap <silent> <Leader>fh :History<CR>
 
+" Work with Trouble to show code issues
+nnoremap <leader>xx <cmd>TroubleToggle<cr>
+nnoremap <leader>xd <cmd>TroubleToggle document_diagnostics<cr>
+nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
+
 " Swap Lines up and down (A = Alt/Option)
-nnoremap <A-j> :m .+1<CR>==
-nnoremap <A-k> :m .-2<CR>==
-inoremap <A-j> <Esc>:m .+1<CR>==gi
-inoremap <A-k> <Esc>:m .-2<CR>==gi
-vnoremap <A-j> :m '>+1<CR>gv=gv
-vnoremap <A-k> :m '<-2<CR>gv=gv
+" TODO
 
 " Use CTRL-[hjkl] to select the active window panes
 nmap <silent> <c-k> :wincmd k<CR>    " CTRL+k
@@ -272,10 +292,10 @@ nmap <silent> <c-h> :wincmd h<CR>    " CTRL+h
 nmap <silent> <c-l> :wincmd l<CR>    " CTRL+l
 
 " Resize window panes
-nnoremap <silent> <leader>+ :resize +5<CR>
-nnoremap <silent> <leader>- :resize -5<CR>
-nnoremap <silent> <leader>< :vertical:resize -5<CR>
-nnoremap <silent> <leader>> :vertical:resize +5<CR>
+nnoremap <silent> <leader><Up> :resize +3<CR>
+nnoremap <silent> <leader><Down>  :resize -3<CR>
+nnoremap <silent> <leader><Left> :vertical:resize -3<CR>
+nnoremap <silent> <leader><Right> :vertical:resize +3<CR>
 
 " Replace CTRL-W with "/"
 nnoremap <silent> <Bslash> :wincmd w<CR>
@@ -293,4 +313,3 @@ nmap <CR> o<Esc>
 " Usage: autocmd BufNewFile,BufRead *<NAME OF FILE WITH WILDCARDS* set filetype=<FILE TYPE>
 
 autocmd BufNewFile,BufRead *Jenkinsfile* set filetype=groovy
-
