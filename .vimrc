@@ -40,7 +40,6 @@
 "    https://vi.stackexchange.com/questions/25149/advice-to-add-set-nocompatible-as-first-line-of-vimrc
 set nocompatible"
 
-
 " =============================================================================
 "                           General Settings
 " =============================================================================
@@ -160,15 +159,20 @@ if has('nvim')
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
   " Config for build-in LSP client
-  "   - Run:  npm i -g pyright
-  Plug 'williamboman/nvim-lsp-installer'
-  Plug 'neovim/nvim-lspconfig'
-
-  " Auto completion Lua plugin for NVIM
-  Plug 'hrsh7th/nvim-compe'
+  "   - Run:  npm install -g pyright
+  "   - LspInstall <pyright>
+  Plug 'williamboman/nvim-lsp-installer'  " Seamlessly manage LSP servers
+  Plug 'neovim/nvim-lspconfig'            " Quickstart configs for LSP client
 
   " Improve LSP UI
-  Plug 'glepnir/lspsaga.nvim'
+  Plug 'glepnir/lspsaga.nvim'             " LSP plugin
+
+  " Auto completion Lua plugin for NVIM
+  Plug 'hrsh7th/cmp-nvim-lsp'    "
+  Plug 'hrsh7th/cmp-buffer'
+  Plug 'hrsh7th/cmp-path'
+  Plug 'hrsh7th/cmp-cmdline'
+  Plug 'hrsh7th/nvim-cmp'
 
   " Pretty list of showing diagnostics, refs, fixes, etc
   Plug 'folke/trouble.nvim'
@@ -242,9 +246,10 @@ set foldlevel=99
 
 " NeoVim Specify Configurations
 if has('nvim')
-  " Adding pyright static type checker for Python
-  lua require("nvim-lsp-installer").setup{}
-  lua require('lspconfig').pyright.setup{}
+  " Anything specific to NeoVim here - Will look into 'lua' sub-directory
+  lua require('completions')
+
+  " Trouble plugin configuraitons
   lua require("trouble").setup{}
 endif
 
@@ -269,7 +274,7 @@ nmap <C-p> :NERDTreeToggle<CR>
 nmap <C-g> :Git<CR>
 
 " Fuzzy Finder Search
-"    https://github.com/junegunn/fzf.vim#commands 
+"    https://github.com/junegunn/fzf.vim#commands
 nnoremap <silent> <leader>ff :Files<CR>
 nnoremap <silent> <leader>fgf :GFiles<CR>
 nnoremap <silent> <leader>fg :Rg<CR>
@@ -293,7 +298,7 @@ nmap <silent> <c-l> :wincmd l<CR>    " CTRL+l
 
 " Resize window panes
 nnoremap <silent> <leader><Up> :resize +3<CR>
-nnoremap <silent> <leader><Down>  :resize -3<CR>
+nnoremap <silent> <leader><Down> :resize -3<CR>
 nnoremap <silent> <leader><Left> :vertical:resize -3<CR>
 nnoremap <silent> <leader><Right> :vertical:resize +3<CR>
 
