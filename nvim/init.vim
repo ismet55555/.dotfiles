@@ -152,16 +152,14 @@ Plug 'nvie/vim-flake8'       " Python PEP-8 checking
 
 " NeoVim Specify Plugins
 if has('nvim')
-  " Nodejs extension host for vim & neovim, load extensions like VSCode and host language servers
-  " Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
   " File parser framework for code abstraction and highlithing
   "   - Install for specific language:  :TSInstall <LANGAUGE>
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
   " Config for build-in Language Server Protocol (LSP) client
   "   - Run in terminal:  npm install -g pyright
-  "   - Run in nvim:      :LspInstall <pyright>
+  "   - Find/List LSPs:    :LspInstallInfo
+  "   - Run in nvim:      :LspInstall <LSP NAME>
   Plug 'williamboman/nvim-lsp-installer'  " Seamlessly manage LSP servers
   Plug 'neovim/nvim-lspconfig'            " Quickstart configs for LSP client
 
