@@ -146,36 +146,33 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 " Python Specific Plugins
-Plug 'tmhedberg/SimpylFold'             " Python code folding for VIM
-Plug 'nvie/vim-flake8'                  " Python PEP-8 checking
+Plug 'tmhedberg/SimpylFold'  " Python code folding for VIM
+Plug 'nvie/vim-flake8'       " Python PEP-8 checking
 
 " NeoVim Specify Plugins
 if has('nvim')
   " Nodejs extension host for vim & neovim, load extensions like VSCode and host language servers
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-  " File parser framework
-  "   - Install support for specific language:  :TSInstall <LANGAUGE>
+  " File parser framework for code abstraction and highlithing
+  "   - Install for specific language:  :TSInstall <LANGAUGE>
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
-  " Config for build-in LSP client
-  "   - Run:  npm install -g pyright
-  "   - LspInstall <pyright>
+  " Config for build-in Language Server Protocol (LSP) client
+  "   - Run in terminal:  npm install -g pyright
+  "   - Run in nvim:      :LspInstall <pyright>
   Plug 'williamboman/nvim-lsp-installer'  " Seamlessly manage LSP servers
   Plug 'neovim/nvim-lspconfig'            " Quickstart configs for LSP client
 
-  " Improve LSP UI
-  Plug 'glepnir/lspsaga.nvim'             " LSP plugin
-
-  " Auto completion Lua plugin for NVIM
-  Plug 'hrsh7th/cmp-nvim-lsp'    "
+  " Code completion/suggestions
+  Plug 'hrsh7th/cmp-nvim-lsp'    " Support more types of completion
   Plug 'hrsh7th/cmp-buffer'
   Plug 'hrsh7th/cmp-path'
   Plug 'hrsh7th/cmp-cmdline'
   Plug 'hrsh7th/nvim-cmp'
-
-  " Pretty list of showing diagnostics, refs, fixes, etc
-  Plug 'folke/trouble.nvim'
+  Plug 'saadparwaiz1/cmp_luasnip'
+  Plug 'saadparwaiz1/cmp_luasnip'  " Snippets source for nvim-cmp
+  Plug 'L3MON4D3/LuaSnip'          " Snippets plugin
 endif
 
 " Initialize plugin system
@@ -217,7 +214,7 @@ command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-hea
 let NERDTreeQuitOnOpen=1
 let g:NERDSpaceDelims = 1                        " https://github.com/preservim/nerdcommenter#usage
 let NERDTreeIgnore = ['\.pyc$', '^__pycache__$'] " Ignore patterns are regular expression strings and seprated by comma
-autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif " Open the existing NERDTree on each new tab
+" autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif " Open the existing NERDTree on each new tab
 
 " Goya (Zen mode) Configuration
 let g:goyo_width=100
@@ -248,15 +245,15 @@ set foldlevel=99
 if has('nvim')
   " Anything specific to NeoVim here - Will look into 'lua' sub-directory
   lua require('completions')
-
-  " Trouble plugin configuraitons
-  lua require("trouble").setup{}
 endif
 
 
 " =============================================================================
 "                       Key Mapping/Binding
 " =============================================================================
+" NOTE: For NVIM, there may be more key mappings within lua files
+"       Type :nmap for a list of active key bindings
+
 " This is <leader> key
 let mapleader = " "
 
