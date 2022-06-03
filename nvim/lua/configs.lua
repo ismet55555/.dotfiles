@@ -54,9 +54,7 @@ cmp.setup.filetype('gitcommit', {
 
 
 ------------------------------------------------------------------------------
-------------------------------------------------------------------------------
---                    Key Mappings/Bindings/Shortcuts
-------------------------------------------------------------------------------
+--------------  Key Mappings/Bindings/Shortcuts  -----------------------------
 ------------------------------------------------------------------------------
 -- Utility functions to make keybindings cleaner
 function Map(mode, lhs, rhs)
@@ -76,7 +74,6 @@ end
 
 ----------------------------- Diagnostics ------------------------------------
 -- Type `:help vim.diagnostic.*` for documentation on any of the below functions
-------------------------------------------------------------------------------
 Map('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>')
 Map('n', '<space>dj', '<cmd>lua vim.diagnostic.goto_next()<CR>')
 Map('n', '<space>dk', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
@@ -92,7 +89,6 @@ Map('n', '<space>fi', '<cmd>PyrightOrganizeImports<CR>')
 local on_attach = function(client, bufnr)
     ------------------------ Language Server Protocol (LSP) ------------------
     -- Type `:help vim.lsp.*` for documentation on any of the below functions
-    --------------------------------------------------------------------------
     MapBuf(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')                           -- Hover menu/documentation
     MapBuf(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>')              -- Show signature
 
