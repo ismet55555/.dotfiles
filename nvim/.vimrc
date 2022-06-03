@@ -244,7 +244,7 @@ set foldlevel=99
 " NeoVim Specify Configurations
 if has('nvim')
   " Anything specific to NeoVim here - Will look into 'lua' sub-directory
-  lua require('completions')
+  lua require('configs')
 endif
 
 
