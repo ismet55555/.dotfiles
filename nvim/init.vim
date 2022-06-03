@@ -19,11 +19,6 @@
 "   - nvm install node
 "   - Reload shell: exec $SHELL
 "
-" Install Universal ctags and setup (use with CTRL+])
-"   - https://github.com/universal-ctags/ctags#the-latest-build-and-package
-"   - Reload shell:     exec $SHELL
-"   - In project root:  ctags -R --exclude=".git" .
-"
 " Place this configuration file into the following directory:
 "   - NeoVim
 "       - Windows:     ~\AppData\Local\nvim\<HERE>
@@ -31,9 +26,10 @@
 "   - Vim
 "       - ~/.vimrc
 "
-" Open NeoVim (nvim)/ Vim (vim) and install all listed packages
+" Open NeoVim (nvim) / Vim (vim) and install all listed packages
 "   - After opening neovim/vim, run:   :PlugInstall
-"   - Run this anytime you modify, add, remove plugins
+"   - Run this anytime you modify or add plugins
+"   - To clean/remove unused plugins:  :PlugClean
 "
 " =============================================================================
 
