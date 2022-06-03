@@ -7,6 +7,7 @@
 " =============================================================================
 "
 " Install NeoVim (Optional)
+"   - Need version nvim 0.70 or above
 "   - https://github.com/neovim/neovim/wiki/Installing-Neovim
 "   - https://github.com/neovim/neovim/releases
 "
@@ -211,7 +212,7 @@ let g:airline#extensions#tabline#formatter='unique_tail_improved'
 command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
 " NERDTree Configuration
-let NERDTreeQuitOnOpen=1
+let NERDTreeQuitOnOpen = 1
 let g:NERDSpaceDelims = 1                        " https://github.com/preservim/nerdcommenter#usage
 let NERDTreeIgnore = ['\.pyc$', '^__pycache__$'] " Ignore patterns are regular expression strings and seprated by comma
 " autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif " Open the existing NERDTree on each new tab
@@ -243,7 +244,8 @@ set foldlevel=99
 
 " NeoVim Specify Configurations
 if has('nvim')
-  " Anything specific to NeoVim here - Will look into 'lua' sub-directory
+  " Anything specific to NeoVim here
+  " This will automatically look into 'lua' sub-directory
   lua require('configs')
 endif
 
