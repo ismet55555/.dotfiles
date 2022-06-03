@@ -153,9 +153,10 @@ if has('nvim')
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
   " Config for build-in Language Server Protocol (LSP) client
-  "   - Run in terminal:  npm install -g pyright
-  "   - Find/List LSPs:    :LspInstallInfo
-  "   - Run in nvim:      :LspInstall <LSP NAME>
+  "   - Each LSP is installed slightly differently, nvim-lsp-installer will do this automatically
+  "   - Available LSPs:  https://github.com/williamboman/nvim-lsp-installer/#available-lsps
+  "   - Find/List LSPs:  :LspInstallInfo
+  "   - Run in nvim:     :LspInstall <LSP NAME>
   Plug 'williamboman/nvim-lsp-installer'  " Seamlessly manage LSP servers
   Plug 'neovim/nvim-lspconfig'            " Quickstart configs for LSP client
 
