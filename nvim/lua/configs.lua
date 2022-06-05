@@ -89,17 +89,18 @@ Map('n', '<space>fi', '<cmd>PyrightOrganizeImports<CR>')
 local on_attach = function(client, bufnr)
     ------------------------ Language Server Protocol (LSP) ------------------
     -- Type `:help vim.lsp.*` for documentation on any of the below functions
-    MapBuf(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')                           -- Hover menu/documentation
-    MapBuf(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>')              -- Show signature
+    MapBuf(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')                    -- Hover menu/documentation
+    MapBuf(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>')       -- Show signature
 
-    MapBuf(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')                     -- Open definition - CTRL-t to return
-    MapBuf(bufnr, "n", "gdt", "<cmd>tab split | lua vim.lsp.buf.definition()<CR>")        -- Open definition in new tab
-    MapBuf(bufnr, "n", "gds", "<cmd>split | lua vim.lsp.buf.definition()<CR>")            -- Open definition in new split
-    MapBuf(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')                     -- References of symbol under cursor
+    MapBuf(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')              -- Open definition - CTRL-t to return
+    MapBuf(bufnr, "n", "gdt", "<cmd>tab split | lua vim.lsp.buf.definition()<CR>") -- Open definition in new tab
+    MapBuf(bufnr, "n", "gds", "<cmd>split | lua vim.lsp.buf.definition()<CR>")     -- Open definition in new split
+    MapBuf(bufnr, "n", "gdv", "<cmd>vsplit | lua vim.lsp.buf.definition()<CR>")    -- Open definition in new vsplit
+    MapBuf(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')              -- References of symbol under cursor
 
-    MapBuf(bufnr, 'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')                 -- Smart rename (even inter files)
-    MapBuf(bufnr, 'n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>')            -- Code action menu
-    MapBuf(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>')              -- Format (if LSP allows)
+    MapBuf(bufnr, 'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')           -- Smart rename (even inter files)
+    MapBuf(bufnr, 'n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>')      -- Code action menu
+    MapBuf(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>')        -- Format (if LSP allows)
 
     MapBuf(bufnr, 'n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>')
     MapBuf(bufnr, 'n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>')
