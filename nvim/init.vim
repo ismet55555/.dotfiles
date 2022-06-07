@@ -132,6 +132,7 @@ Plug 'brooth/far.vim'                   " Find and replace help
 Plug 'mhinz/vim-signify'                " Show a diff using Vim its sign column
 Plug 'tpope/vim-obsession'              " Save current VIM session/layout (:Obsess)
 Plug 'vim-syntastic/syntastic'          " Syntax checking
+Plug 'psliwka/vim-smoothie'             " Smooth scrolling CTRL-d CTRL-u
 
 " Fuzzy Finder (Search)
 "   - '       : Exact match (ie. 'Dockerfile)
