@@ -119,7 +119,6 @@ Plug 'preservim/nerdcommenter'          " Vim plugin for intensely nerdy comment
 Plug 'xuyuanp/nerdtree-git-plugin'      " A plugin of NERDTree showing git status
 Plug 'sheerun/vim-polyglot'             " A collection of language packs for Vim
 Plug 'jiangmiao/auto-pairs'             " Insert or delete brackets, parens, quotes in pair
-Plug 'nvim-lua/plenary.nvim'            " Bunch of Lua functions to use with NVIM
 Plug 'Yggdroot/indentLine'              " Display the indention levels with thin vertical lines
 Plug 'easymotion/vim-easymotion'        " Move to specific positions on screen fast
 Plug 'tpope/vim-unimpaired'             " Keyboard shortcuts for common VIM functions
@@ -149,6 +148,12 @@ Plug 'nvie/vim-flake8'       " Python PEP-8 checking
 
 " NeoVim Specify Plugins
 if has('nvim')
+  " Bunch of Lua functions to use with NVIM
+  Plug 'nvim-lua/plenary.nvim'
+  
+  " Git diff viewer
+  Plug 'sindrets/diffview.nvim'
+  
   " File parser framework for code abstraction and highlithing
   "   - Install for specific language:  :TSInstall <LANGAUGE>
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
