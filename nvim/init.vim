@@ -282,11 +282,6 @@ nnoremap <silent> <Leader>fc :Commits<CR>
 nnoremap <silent> <Leader>fw :Windows<CR>
 nnoremap <silent> <Leader>fh :History<CR>
 
-" Work with Trouble to show code issues
-nnoremap <leader>xx <cmd>TroubleToggle<cr>
-nnoremap <leader>xd <cmd>TroubleToggle document_diagnostics<cr>
-nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
-
 " Swap Lines up and down (A = Alt/Option)
 " TODO
 
