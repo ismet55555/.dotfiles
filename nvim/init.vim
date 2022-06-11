@@ -50,6 +50,7 @@ set mouse=a         " Enable mouse support (might not work well on Mac OS X)
 set autoread        " Reload files changed outside vim
 set conceallevel=0  " Remove any text/code concealment, text is shown normally
 set lazyredraw      " Don't redraw while executing macros (good performance config)
+" set list            " Show tabs and space characters greyed out
 
 set clipboard=unnamedplus                   " Enables the clipboard between Vim/Neovim and other applications.
 set completeopt=noinsert,menuone,noselect   " Modifies the auto-complete menu to behave more like an IDE.
@@ -58,6 +59,7 @@ set splitbelow splitright                   " Change the split screen behavior
 set title                                   " Show file title
 set colorcolumn=100                         " Show column a border for good code style
 set ttyfast                                 " Speed up scrolling in Vim
+set scrolloff=10                            " Number of lines below and above code when scorlling
 set lcs+=space:·                            " Show spaces
 set nowrap                                  " Disable line/text wrapping
 " set spell                                   " Enable spell check (may need to download language package)
@@ -297,6 +299,10 @@ nnoremap <silent> <leader><Down> :resize -3<CR>
 nnoremap <silent> <leader><Left> :vertical:resize -3<CR>
 nnoremap <silent> <leader><Right> :vertical:resize +3<CR>
 
+" Reselect visual selection after auto-indenting
+vnoremap < <gv
+vnoremap > >gv
+
 " Replace CTRL-W with "/"
 nnoremap <silent> <Bslash> :wincmd w<CR>
 
@@ -305,6 +311,10 @@ nnoremap <leader>a ggVG
 
 " Enter blank line without leaving normal mode
 nmap <CR> o<Esc>
+
+" Easy enter trailing comma (insert and normal mode)
+imap ,, <Esc>A,<Esc>
+nmap ,, A,<Esc>
 
 
 " ==============================================================
