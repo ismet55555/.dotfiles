@@ -201,11 +201,13 @@ hi Normal guibg=NONE ctermbg=NONE
 " Keep window background in sync with color scheme
 let g:bargreybars_auto=0
 
-" Style Airline
+" Airline Statusbar settings
 let g:airline_theme='iceberg'
 let g:airline_powerline_fonts=1                      " Get powerline symbols
+
+" Airline - Tabline extension settings
 let g:airline#extensions#tabline#show_close_button=0 " Remove 'X' at the end of tabline
-let g:airline#extensions#tabline#enable=1            " Enable smarter tab line
+let g:airline#extensions#tabline#enabled=1           " Enable smarter tab line
 let g:airline#extensions#tabline#left_sep=' '        " Tabline left seperator char
 let g:airline#extensions#tabline#left_alt_sep='|'    " Tabline default seperator
 let g:airline#extensions#tabline#formatter='unique_tail_improved'
