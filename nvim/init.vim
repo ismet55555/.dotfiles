@@ -134,6 +134,7 @@ Plug 'mhinz/vim-signify'                " Show a diff using Vim its sign column
 Plug 'tpope/vim-obsession'              " Save current VIM session/layout (:Obsess)
 Plug 'vim-syntastic/syntastic'          " Syntax checking
 Plug 'psliwka/vim-smoothie'             " Smooth scrolling CTRL-d CTRL-u
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' } " Golang tools and utility
 
 " Fuzzy Finder (Search)
 "   - '       : Exact match (ie. 'Dockerfile)
