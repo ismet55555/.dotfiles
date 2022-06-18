@@ -120,14 +120,14 @@ Plug 'preservim/nerdtree'               " A tree explorer plugin for vim
 Plug 'preservim/nerdcommenter'          " Vim plugin for intensely nerdy commenting powers
 Plug 'xuyuanp/nerdtree-git-plugin'      " A plugin of NERDTree showing git status
 Plug 'sheerun/vim-polyglot'             " A collection of language packs for Vim
-Plug 'jiangmiao/auto-pairs'             " Insert or delete brackets, parens, quotes in pair
+Plug 'jiangmiao/auto-pairs'             " Insert or delete brackets, parens, quotes in pair (turn off: Alt-p)
 Plug 'Yggdroot/indentLine'              " Display the indention levels with thin vertical lines
 Plug 'easymotion/vim-easymotion'        " Move to specific positions on screen fast
 Plug 'tpope/vim-unimpaired'             " Keyboard shortcuts for common VIM functions
 Plug 'tpope/vim-fugitive'               " Git wrapper for VIM
-Plug 'tpope/vim-surround'               " Delete/change/add surrounding characters (cs,ds,ys)
-Plug 'junegunn/goyo.vim'                " Distraction free writing (Zen mode)
-Plug 'junegunn/limelight.vim'           " Dim everything but current paragraph
+Plug 'tpope/vim-surround'               " Delete/change/add surrounding characters (cs, ds, ys)
+Plug 'junegunn/goyo.vim'                " Distraction free writing (Zen mode) (:Goyo, :Goyo!)
+Plug 'junegunn/limelight.vim'           " Dim everything but current paragraph (:Limelight, :Limelight!)
 Plug 'pseewald/vim-anyfold'             " Folding and motion based on indentation
 Plug 'brooth/far.vim'                   " Find and replace help
 Plug 'mhinz/vim-signify'                " Show a diff using Vim its sign column
