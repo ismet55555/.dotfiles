@@ -135,6 +135,12 @@ Plug 'tpope/vim-obsession'              " Save current VIM session/layout (:Obse
 Plug 'vim-syntastic/syntastic'          " Syntax checking
 Plug 'psliwka/vim-smoothie'             " Smooth scrolling CTRL-d CTRL-u
 
+" Cheat.sh Code Snippets and Answers
+"    - Open with :Cheat
+"    - Search Example: python open and read file
+Plug 'RishabhRD/popfix'
+Plug 'RishabhRD/nvim-cheat.sh'
+
 " Fuzzy Finder (Search)
 "   - '       : Exact match (ie. 'Dockerfile)
 "   - |       : Or operator (ie. yo | blah)
