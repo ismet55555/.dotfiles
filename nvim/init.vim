@@ -134,7 +134,6 @@ Plug 'mhinz/vim-signify'                " Show a diff using Vim its sign column
 Plug 'tpope/vim-obsession'              " Save current VIM session/layout (:Obsess)
 Plug 'vim-syntastic/syntastic'          " Syntax checking
 Plug 'psliwka/vim-smoothie'             " Smooth scrolling CTRL-d CTRL-u
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' } " Golang tools and utility
 
 " Fuzzy Finder (Search)
 "   - '       : Exact match (ie. 'Dockerfile)
@@ -148,6 +147,9 @@ Plug 'junegunn/fzf.vim'
 " Python Specific Plugins
 Plug 'tmhedberg/SimpylFold'  " Python code folding for VIM
 Plug 'nvie/vim-flake8'       " Python PEP-8 checking
+
+" Golang Specific Plugins
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " NeoVim Specify Plugins
 if has('nvim')
