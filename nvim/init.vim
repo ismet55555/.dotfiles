@@ -319,8 +319,9 @@ nnoremap <silent> <leader><Right> :vertical:resize +3<CR>
 vnoremap < <gv
 vnoremap > >gv
 
-" Replace CTRL-W with "/"
+" Cycle through splits/windows (\ forward, | backward)
 nnoremap <silent> <Bslash> :wincmd w<CR>
+nnoremap <silent> \| :wincmd W<CR>
 
 " Select all in current file
 nnoremap <leader>a ggVG
