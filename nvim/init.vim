@@ -288,12 +288,14 @@ nmap <C-g> :Git<CR>
 
 " Fuzzy Finder Search
 "    https://github.com/junegunn/fzf.vim#commands
-nnoremap <silent> <leader>ff :Files<CR>
+nnoremap <silent> <leader>ff :Files<CR>    " Find files in current directory
 nnoremap <silent> <leader>fgf :GFiles<CR>
-nnoremap <silent> <leader>fg :Rg<CR>
+nnoremap <silent> <leader>fg :Rg<CR>       " Find text in current directory
 nnoremap <silent> <Leader>fc :Commits<CR>
 nnoremap <silent> <Leader>fw :Windows<CR>
 nnoremap <silent> <Leader>fh :History<CR>
+nnoremap <silent> <Leader>fb :Buffers<CR>
+nnoremap <silent> <Leader>fm :Maps<CR>     " Find a VIM keybinding/shortcut
 
 " Swap Lines up and down (A = Alt/Option)
 " TODO
