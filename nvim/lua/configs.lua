@@ -86,8 +86,17 @@ Map('n', '<space>fi', '<cmd>PyrightOrganizeImports<CR>')
 Map('n', '<space>do', '<cmd>DiffviewOpen<CR>')
 Map('n', '<space>dc', '<cmd>DiffviewClose<CR>')
 
--- TODO: <cmd>Telescope diagnostics<CR> to list all issues
--- TODO: <cmd>Telescope lsp_references<CR to go to all references
+-- Debugger Adapter Protocol (DAP)
+Map('n', "<F6>", "<cmd>lua require'dap'.terminate()<CR>")
+Map('n', "<F5>", "<cmd>lua require'dap'.continue()<CR>")
+Map('n', "<F2>", "<cmd>lua require'dap'.step_over()<CR>")
+Map('n', "<F3>", "<cmd>lua require'dap'.step_into()<CR>")
+Map('n', "<F4>", "<cmd>lua require'dap'.step_out()<CR>")
+Map('n', "<space>b", "<cmd>lua require'dap'.toggle_breakpoint()<CR>")  -- Set/Remove Breakpoint
+Map('n', "<space>cond", "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")  -- Conditional Breakpoint
+Map('n', "<space>log", "<cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>")
+Map('n', "<space>rep", "<cmd>lua require'dap'.repl.open()<CR>")
+Map('n', "<space>dg", "<cmd>lua require'dap-go'.debug_test()<CR>")  -- Golang debugger
 
 -- Key bindings after current buffer has attached to LSP
 local on_attach = function(client, bufnr)
@@ -143,6 +152,24 @@ for _, lsp in pairs(servers) do
         on_attach = on_attach,
         capabilities = capabilities
     }
+end
+
+
+------------------------------------------------------------------------------
+------------------ Debugger Adapter Protocol (DAP) ---------------------------
+------------------------------------------------------------------------------
+require('dap-go').setup()
+require("nvim-dap-virtual-text").setup()
+require('dapui').setup()
+local dap, dapui = require("dap"), require("dapui")
+dap.listeners.after.event_initialized["dapui_config"] = function() -- Open DAP UI when DAP starts
+  dapui.open()
+end
+dap.listeners.before.event_terminated["dapui_config"] = function()
+  dapui.close()
+end
+dap.listeners.before.event_exited["dapui_config"] = function()
+  dapui.close()
 end
 
 
