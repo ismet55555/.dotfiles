@@ -186,6 +186,15 @@ if has('nvim')
   Plug 'saadparwaiz1/cmp_luasnip'
   Plug 'saadparwaiz1/cmp_luasnip'  " Snippets source for nvim-cmp
   Plug 'L3MON4D3/LuaSnip'          " Snippets plugin
+
+  " Debugger Adapter Protocol (DAP) setup
+  Plug 'mfussenegger/nvim-dap'           " Enables DAP
+  Plug 'rcarriga/nvim-dap-ui'            " Pretty UI for debugger
+  Plug 'theHamsta/nvim-dap-virtual-text' " Find variable definitions
+
+  " DAP - golang
+  "    - Install delve: go install github.com/go-delve/delve/cmd/dlv@latest
+  Plug 'leoluz/nvim-dap-go'
 endif
 
 " Initialize plugin system
