@@ -297,6 +297,9 @@ nnoremap <silent> <Leader>fh :History<CR>
 nnoremap <silent> <Leader>fb :Buffers<CR>
 nnoremap <silent> <Leader>fm :Maps<CR>     " Find a VIM keybinding/shortcut
 
+" Cheat.sh search input for coding questions
+nnoremap <silent> <leader><leader>c :Cheat<CR>
+
 " Swap Lines up and down (A = Alt/Option)
 " TODO
 
