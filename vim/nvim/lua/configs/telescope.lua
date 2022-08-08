@@ -91,6 +91,10 @@ telescope.setup {
     -- }
     -- Now the picker_config_key will be applied every time you call this
     -- builtin picker
+    find_files = {
+      file_ignore_patterns = {".git/", ".cache", "node_modules", "%.o", "%.a", "%.out",
+        "%.class", "%.pdf", "%.mkv", "%.mp4", "%.zip", "%.jpeg", "%.jpg"},
+    }
   },
   extensions = {
     -- Your extension configuration goes here:
