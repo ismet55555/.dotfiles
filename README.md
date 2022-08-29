@@ -11,7 +11,11 @@ My configuration dotfiles for various things.
     - `git clone ....`
   
 2. Simlink files or directories into appropriate places
-    - MacOS/Linux: `ln -s <PATH OF CONFIG SOURCE> <PATH OF CONFIG TARGET>`
+    - MacOS/Linux:
+        - File/Directory: `ln -s <PATH OF CONFIG SOURCE> <PATH OF CONFIG TARGET>`
+        - Examples:
+            - `ln -s ~/.dotfiles/shell/.tmux.conf ~/.tmux.conf`
+            - `ln -s $(pwd)/.zshrc ~/.zshrc`
     - Windows:
       - File: `mklink <PATH OF CONFIG SOURCE> <PATH OF CONFIG TARGET>`
       - Directory: `mklink /D <PATH OF CONFIG SOURCE> <PATH OF CONFIG TARGET>`
