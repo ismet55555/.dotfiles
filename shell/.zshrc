@@ -114,9 +114,8 @@ plugins+=(zsh-autosuggestions)
 #    Oh-mh-zsh: git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 plugins+=(zsh-syntax-highlighting)
 
-# zsh syntax highlighting
-#    Oh-mh-zsh: git clone https://github.com/jeffreytse/zsh-vi-mode $ZSH_CUSTOM/plugins/zsh-vi-mode
-plugins+=(zsh-vi-mode)
+# zsh VI mode
+# plugins+=(zsh-vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
