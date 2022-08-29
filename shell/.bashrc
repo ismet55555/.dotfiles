@@ -125,8 +125,3 @@ fi
 
 # Pipenv autocompletion
 eval "$(pipenv --completion)"
-
-# Prompt/Greeting
-if [ -f ~/.prompt ]; then
-    . ~/.prompt
-fi
