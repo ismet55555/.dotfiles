@@ -171,4 +171,3 @@ fi
 # Pipenv autocompletion
 eval "$(pipenv --completion)"
 
-export TERM=xterm-256color
