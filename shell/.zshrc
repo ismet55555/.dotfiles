@@ -1,12 +1,12 @@
 ###############################################################################
-#             _              
-#            | |             
-#     _______| |__  _ __ ___ 
+#             _
+#            | |
+#     _______| |__  _ __ ___
 #    |_  / __| '_ \| '__/ __|
-#   _ / /\__ \ | | | | | (__ 
+#   _ / /\__ \ | | | | | (__
 #  (_)___|___/_| |_|_|  \___|
-#                            
-#                            
+#
+#
 ###############################################################################
 
 # Installing ZSH Terminal:
@@ -114,6 +114,11 @@ plugins+=(zsh-autosuggestions)
 #    Oh-mh-zsh: git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 plugins+=(zsh-syntax-highlighting)
 
+# zsh-auto-notify
+#    Oh-mh-zsh: git clone https://github.com/MichaelAquilina/zsh-auto-notify.git $ZSH_CUSTOM/plugins/auto-notify
+#    Set threshold: export AUTO_NOTIFY_THRESHOLD=X
+plugins+=(auto-notify)
+
 # zsh VI mode
 # plugins+=(zsh-vi-mode)
 
@@ -165,3 +170,5 @@ fi
 
 # Pipenv autocompletion
 eval "$(pipenv --completion)"
+
+export TERM=xterm-256color
