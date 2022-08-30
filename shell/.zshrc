@@ -1,12 +1,12 @@
 ###############################################################################
-#             _              
-#            | |             
-#     _______| |__  _ __ ___ 
+#             _
+#            | |
+#     _______| |__  _ __ ___
 #    |_  / __| '_ \| '__/ __|
-#   _ / /\__ \ | | | | | (__ 
+#   _ / /\__ \ | | | | | (__
 #  (_)___|___/_| |_|_|  \___|
-#                            
-#                            
+#
+#
 ###############################################################################
 
 # Installing ZSH Terminal:
@@ -27,7 +27,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="~/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -114,9 +114,13 @@ plugins+=(zsh-autosuggestions)
 #    Oh-mh-zsh: git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 plugins+=(zsh-syntax-highlighting)
 
-# zsh syntax highlighting
-#    Oh-mh-zsh: git clone https://github.com/jeffreytse/zsh-vi-mode $ZSH_CUSTOM/plugins/zsh-vi-mode
-plugins+=(zsh-vi-mode)
+# zsh-auto-notify
+#    Oh-mh-zsh: git clone https://github.com/MichaelAquilina/zsh-auto-notify.git $ZSH_CUSTOM/plugins/auto-notify
+#    Set threshold: export AUTO_NOTIFY_THRESHOLD=X
+plugins+=(auto-notify)
+
+# zsh VI mode
+# plugins+=(zsh-vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -161,13 +165,10 @@ if [ -f ~/.env ]; then
     . ~/.env
 fi
 
-# Prompt/Greeting
-if [ -f ~/.prompt ]; then
-    . ~/.prompt
-fi
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Pipenv autocompletion
 eval "$(pipenv --completion)"
+
+export TERM=xterm-256color
