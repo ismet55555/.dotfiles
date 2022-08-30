@@ -63,6 +63,7 @@ keymap("n", "<leader>fc", "<cmd>Telescope git_commits<CR>", opts)
 
 -- PLUGIN - nvim-tree
 --    - Default key mappings: :help nvim-tree-default-mappings
+--    - Help Shortcut:  g?
 keymap("n", "<C-p>", "<cmd>:NvimTreeToggle<CR>", opts)
 keymap('n', '<leader>dc', '<cmd>DiffviewClose<CR>', opts)
 
