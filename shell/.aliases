@@ -55,5 +55,8 @@ alias ls="exa"
 # Subsituting bat for cat
 alias cat="bat -p"
 
+# Substituting man with tldr
+alias man="tldr"
+
 # Reload the shell
 alias reload-shell="exec $SHELL"
