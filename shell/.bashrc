@@ -125,3 +125,4 @@ fi
 
 # Pipenv autocompletion
 eval "$(pipenv --completion)"
+. "$HOME/.cargo/env"
