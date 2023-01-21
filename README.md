@@ -19,3 +19,6 @@ My configuration dotfiles for various things.
     - Windows:
       - File: `mklink <PATH OF CONFIG SOURCE> <PATH OF CONFIG TARGET>`
       - Directory: `mklink /D <PATH OF CONFIG SOURCE> <PATH OF CONFIG TARGET>`
+
+3. If needed, unlinking a file
+    - `unlink <SYMLIINK PATH>`
