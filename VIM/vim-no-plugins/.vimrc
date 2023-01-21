@@ -79,9 +79,9 @@ set wildignore+=*.png,*.jpg,*.gif
 " =============================================================================
 "                             Color Theme
 " =============================================================================
-" Theme description file must be present inside .vim/colors/<THEME FILE>.vim
+" Theme description file must be present inside .vim/colors/
 " Theme docs: https://github.com/ErichDonGubler/vim-sublime-monokai
-" colorscheme sublimemonokai
+colorscheme sublimemonokai
 
 
 " =============================================================================
@@ -105,7 +105,7 @@ nmap <silent> <c-l> :wincmd l<CR>    " CTRL+l
 
 " Use SHIFT-[hl] to go to next/previous buffer
 nmap <silent> <S-h> :bprevious<CR>    " SHIFT-h
-nmap <silent> <S-l> :bnext<CR>    " SHIFT-h
+nmap <silent> <S-l> :bnext<CR>        " SHIFT-l
 
 " Resize window panes
 nnoremap <silent> <leader><Up> :resize +3<CR>
