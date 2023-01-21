@@ -117,7 +117,7 @@ plugins+=(zsh-syntax-highlighting)
 # zsh-auto-notify
 #    Oh-mh-zsh: git clone https://github.com/MichaelAquilina/zsh-auto-notify.git $ZSH_CUSTOM/plugins/auto-notify
 #    Set threshold: export AUTO_NOTIFY_THRESHOLD=X
-plugins+=(auto-notify)
+# plugins+=(auto-notify)
 
 # zsh VI mode
 # plugins+=(zsh-vi-mode)
