@@ -60,3 +60,6 @@ alias man="tldr"
 
 # Reload the shell
 alias reload-shell="exec $SHELL"
+
+# Other
+alias yj="yojenkins"
