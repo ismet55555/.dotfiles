@@ -1,11 +1,15 @@
 [user]
+  signingkey = ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDPM6bvbkCWq3vE0fTjhQAZX3se+Txw041gAcqIvlVPQ0rWfh3S5lz4PMHBDkmz3wlYAgDjRj2Z1i/fm9fVSCVK42BVZqLWe58a/IF9nWcwwbJEF35DQnjgmBThxbVgPYSOqfy1iShTCaCNIIw20mkaMT9CPk7CM1YFV5HDYbVE6NwxEmYYwpdD3YycxukFT7QRkbwj+9KYyxqEhj8cbHAdG3aqozQLHvUHppLsNWcu1ZzAdZ7M4tTIPsSqrTGfsfreY0KQvuKg8LMOFoxo1ED7oKTZKGEM/WJjwG5Sk+dPVtt8PMySOWyh6mC1hYetLQ0szOgBCC3Ub9oHo7gH0jC6TehJUIBIOTf8MB02nPC4AySZrA4s+w1z27KiYqHx4ivobV+4qrud2TjEDKEVwiTJUcZAxkfyq4Rd75DNZbBIpRkw8G4+nQItEFYph8iOT90uK/dCA35y41xe1Z/cRUsU/hcETvjHY2mR8kSu4RW73/udoUotdxyJaTNHJpEB3+c=
 	email = ismet.handzic@gmail.com
 	name = Ismet Handzic
 	username = ismet55555
+
 [core]
 	editor = nvim
+
 [web]
 	browser = google-chrome
+
 [alias]
 	s = status
 	a = add
@@ -20,3 +24,12 @@
 	################################
 	l = log --oneline
 	lg = log --oneline --graph --decorate
+
+[gpg]
+  format = ssh
+
+[gpg "ssh"]
+  program = "/opt/1Password/op-ssh-sign"
+
+[commit]
+  gpgsign = true
