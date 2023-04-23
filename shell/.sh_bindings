@@ -1,0 +1,83 @@
+#!/bin/bash
+
+###############################################################################
+
+# Any additional bash terminal bindings (keyboard shortcuts) go here.
+# This is called and loaded with .bashrc
+
+###############################################################################
+
+# Create a directory and cd into it
+function mkdircd () {
+  mkdir -p "$@" && eval cd "\"\$$#\""
+}
+
+# Find largest file
+function find-largest-files () {
+  du -h -x -s -- * | sort -r -h | head -20
+}
+
+# Copy command output to system clipboard
+function copy() {
+    if [[ $(uname) == 'Darwin' ]]; then
+        cat | pbcopy
+    elif [[ $(uname) == 'Linux' ]]; then
+        cat | xclip -selection clipboard
+    elif [[ $(uname) == 'Windows' ]]; then
+        cat > /dev/clipboard
+    else
+        echo "ERROR: Copy fail. Unsupported operating system: $(uname)"
+    fi
+}
+
+###############################################################################
+
+# Select a docker container to start and attach to
+function dock-start-attach() {
+  local cid
+  cid=$(docker ps -a | sed 1d | fzf -1 -q "$1" | awk '{print $1}')
+
+  [ -n "$cid" ] && docker start "$cid" && docker attach "$cid"
+}
+
+# Interactive shell into running container
+function dock-attach() {
+  local cid
+  cid=$(docker ps | sed 1d | fzf -1 -q "$1" | awk '{print $1}')
+
+  docker exec -it "$cid" /bin/bash || docker exec -it "$cid" /bin/sh
+}
+
+# Inspect a container
+function dock-inspect() {
+  local cid
+  cid=$(docker ps -a | sed 1d | fzf -1 -q "$1" | awk '{print $1}')
+
+  docker inspect "$cid" | jq || docker inspect "$cid"
+}
+
+# Select a running docker container to stop
+function dock-stop() {
+  local cid
+  cid=$(docker ps | sed 1d | fzf -q "$1" | awk '{print $1}')
+
+  [ -n "$cid" ] && docker stop "$cid"
+}
+
+# Select a docker container to remove
+function dock-rm() {
+  local cid
+  cid=$(docker ps -a | sed 1d | fzf -q "$1" | awk '{print $1}')
+
+  [ -n "$cid" ] && docker rm "$cid"
+}
+
+# Select a docker image or images to remove
+function dock-rmi() {
+  docker images | sed 1d | fzf -q "$1" --no-sort -m --tac | awk '{ print $3 }' | xargs -r docker rmi
+}
+
+# Prune system of dangling resources
+function dock-prune() {
+  docker system prune --force
+}

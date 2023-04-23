@@ -102,16 +102,6 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 
 ###############################################################################
 
-# Alias definitions
-if [ -f ~/.aliases ]; then
-    . ~/.aliases
-fi
-
-# Envirnmental Variables (Custom)
-if [ -f ~/.env ]; then
-    . ~/.env
-fi
-
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -126,3 +116,26 @@ fi
 # Pipenv autocompletion
 eval "$(pipenv --completion)"
 . "$HOME/.cargo/env"
+
+
+###############################################################################
+###############################################################################
+#                       References to Other Files
+###############################################################################
+###############################################################################
+# Alias (Terminal shortcuts)
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+# Alias bindings
+if [ -f ~/.bash_bindings ]; then
+    . ~/.bash_bindings
+fi
+
+# Xonar loaded items
+if [ -f ~/.bash_env ]; then
+    . ~/.bash_env
+fi
+
+

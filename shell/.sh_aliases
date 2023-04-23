@@ -21,10 +21,6 @@ alias lt3='tree -L 3 -a'
 alias cd2='cd ../..'
 alias cd3='cd ../../..'
 alias cd4='cd ../../..'
-alias cdp='cd ~/Projects'
-
-# Create a directory and cd into it
-function mkdircd () { mkdir -p "$@" && eval cd "\"\$$#\""; }
 
 # Copy to clipboard
 alias ccc='xclip -sel clip'
@@ -57,6 +53,13 @@ alias cat="bat -p"
 
 # Substituting man with tldr
 alias man="tldr"
+
+# History
+alias h="history"
+alias hf="history | fzf"
+
+# Processes
+alias p="ps -ef | fzf"
 
 # Reload the shell
 alias reload-shell="exec $SHELL"
