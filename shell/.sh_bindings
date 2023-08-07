@@ -13,7 +13,7 @@ function mkdircd () {
 }
 
 # Find largest file
-function find-largest-files () {
+function large-files () {
   du -h -x -s -- * | sort -r -h | head -20
 }
 

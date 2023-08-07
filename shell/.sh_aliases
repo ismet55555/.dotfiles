@@ -40,7 +40,7 @@ alias python="python3"
 # Create live server for current directory
 alias serve="python3 -m http.server"
 
-# Creating a python3 virtual envirnoment
+# Creating a python3 virtual environment
 alias mkpyvenv="python3 -m venv env; source env/bin/activate"
 alias env-on="source env/bin/activate"
 alias env-off="deactivate"
@@ -48,7 +48,7 @@ alias env-off="deactivate"
 # Substituting exa for ls
 alias ls="exa"
 
-# Subsituting bat for cat
+# Substituting bat for cat
 alias cat="bat -p"
 
 # Substituting man with tldr
