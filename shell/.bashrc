@@ -30,7 +30,7 @@ shopt -s histappend
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=10000
 HISTFILESIZE=20000
-HISTTIMEFORMAT="[%d/%m/%y %T] "
+HISTTIMEFORMAT=""
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -116,6 +116,15 @@ fi
 # Pipenv autocompletion
 eval "$(pipenv --completion)"
 . "$HOME/.cargo/env"
+
+
+###############################################################################
+
+# Key bindings for fzf
+#    - Ctrl+r - Search history
+#    - Alt+c  - Change directory
+#    - Ctrl+t - Paste the selected file path(s) into the command line
+. /usr/share/doc/fzf/examples/key-bindings.bash
 
 
 ###############################################################################
