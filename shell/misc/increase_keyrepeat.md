@@ -11,10 +11,12 @@
     - Delay Until Repeat -> Short
 
 2. In terminal
-    - `defaults write -g InitialKeyRepeat -int 10`
-    - `defaults write -g KeyRepeat -int 1`
-    - `defaults write -g ApplePressAndHoldEnabled -bool false`
-    - Log out and log in
+    - ```bash
+      defaults write -g InitialKeyRepeat -int 10
+      defaults write -g KeyRepeat -int 1
+      defaults write -g ApplePressAndHoldEnabled -bool false
+      ```
+    - Log out and log back in
 
 ## Ubuntu
 
