@@ -119,6 +119,9 @@ plugins+=(zsh-syntax-highlighting)
 # zsh VI mode
 # plugins+=(zsh-vi-mode)
 
+# sudo with ESC-ESC
+plugins+=(sudo)
+
 source $ZSH/oh-my-zsh.sh
 
 ###############################################################################
