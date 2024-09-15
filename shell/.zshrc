@@ -169,3 +169,4 @@ fi
 if [ -f ~/.sh_env ]; then
     . ~/.sh_env
 fi
+. "$HOME/.cargo/env"

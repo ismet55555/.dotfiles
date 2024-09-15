@@ -51,8 +51,8 @@ alias ls="exa"
 # Substituting bat for cat
 alias cat="bat -p"
 
-# Substituting man with tldr
-alias man="tldr"
+# VIM to NeoVim
+alias vim="nvim"
 
 # History
 alias h="history"
