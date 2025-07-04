@@ -88,6 +88,7 @@ COMPLETION_WAITING_DOTS="true"
 # see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
 HISTTIMEFORMAT=""
+HISTSIZE=50000
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -159,6 +160,9 @@ fi
 if [ -f ~/.sh_aliases ]; then
     . ~/.sh_aliases
 fi
+if [ -f ~/.aliases ]; then
+    . ~/.aliases
+fi
 
 # Alias bindings/function
 if [ -f ~/.sh_bindings ]; then
@@ -169,4 +173,16 @@ fi
 if [ -f ~/.sh_env ]; then
     . ~/.sh_env
 fi
+if [ -f ~/.env ]; then
+    . ~/.env
+fi
+
 . "$HOME/.cargo/env"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/ismet/.cache/lm-studio/bin"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+

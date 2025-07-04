@@ -5,4 +5,3 @@
 - `.env` - Any environmental variables to be set by default
 - `.zshrc` - Zsh console default configuraitons
 - `.tmux.conf` - tmux configurations and defualts
-

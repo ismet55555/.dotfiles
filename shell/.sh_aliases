@@ -7,7 +7,7 @@
 ###############################################################################
 
 # some more ls aliases
-alias ll='exa --all --long --header --group --git'
+alias ll='lsd --almost-all --long --header --git'
 # alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
@@ -45,14 +45,16 @@ alias mkpyvenv="python3 -m venv env; source env/bin/activate"
 alias env-on="source env/bin/activate"
 alias env-off="deactivate"
 
-# Substituting exa for ls
-alias ls="exa"
-
 # Substituting bat for cat
 alias cat="bat -p"
 
-# VIM to NeoVim
+# NeoVim
 alias vim="nvim"
+alias vi="nvim"
+alias nv="nvim"
+
+# Attach to tmux session
+alias ta="tmux attach"
 
 # History
 alias h="history"
@@ -64,5 +66,12 @@ alias p="ps -ef | fzf"
 # Reload the shell
 alias reload-shell="exec $SHELL"
 
+# Processes
+alias p="ps -ef | fzf"
+
+# Weather
+alias wt="curl wttr.in/tampa"
+
 # Other
-alias yj="yojenkins"
+alias printenv-no-value="awk 'BEGIN{for(v in ENVIRON) print v}'"
+alias ls-path="echo \$PATH | tr ':' '\n'"
