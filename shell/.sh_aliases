@@ -24,6 +24,7 @@ alias cd4='cd ../../..'
 
 # Copy to clipboard
 alias ccc='xclip -sel clip'
+# alias ccc='pbcopy'
 
 # git add and commit
 alias gitac='git add . && git commit -m "minor quick changes"'
@@ -36,6 +37,7 @@ alias croc-send="croc send --code ismet-mail"
 
 # Ignore potential python 2
 alias python="python3"
+alias pip="pip3"
 
 # Create live server for current directory
 alias serve="python3 -m http.server"
@@ -52,6 +54,7 @@ alias cat="bat -p"
 alias vim="nvim"
 alias vi="nvim"
 alias nv="nvim"
+alias nvim-config="cd ~/.config/nvim/"
 
 # Attach to tmux session
 alias ta="tmux attach"
@@ -75,3 +78,11 @@ alias wt="curl wttr.in/tampa"
 # Other
 alias printenv-no-value="awk 'BEGIN{for(v in ENVIRON) print v}'"
 alias ls-path="echo \$PATH | tr ':' '\n'"
+alias yj="yojenkins"
+
+# git stuff
+alias gs="git status --long --show-stash"
+alias gd="git diff"
+alias gb='git for-each-ref --sort=committerdate "refs/heads" "refs/remotes/" --format="%(color:yellow)%(refname:short)%(color:reset) | %(color:green)%(authorname)%(color:reset) | %(color:blue)%(committerdate:iso)%(color:reset) | %(contents:subject)"'
+alias gb2='git for-each-ref --sort=committerdate "refs/heads/" "refs/remotes/" --format="%(refname:short)|%(authorname)|%(committerdate:iso)|%(contents:subject)" | awk -F "|" '\''BEGIN { printf "%-30s %-20s %-25s %s\n", "BRANCH", "AUTHOR", "DATE", "COMMIT MESSAGE"; printf "%-30s %-20s %-25s %s\n", "------------------------------", "--------------------", "-------------------------", "------------------------------"; } { printf "%-30s %-20s %-25s %s\n", $1, $2, $3, $4; }'\'''
+alias gwt="git worktree"

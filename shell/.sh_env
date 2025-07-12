@@ -13,17 +13,16 @@
 ###############################################################################
 
 # Golang Setup
+# echo "Init go ..."
 export GOPATH=$HOME/go                # Go code path/location
 if [[ "$(uname)" == "Darwin" ]]; then # Location of Go executable
-  # MacOS - Installed with Homebrew
-  export GOROOT="$(brew --prefix golang)/libexec"
+	# MacOS - Installed with Homebrew
+	export GOROOT="$(brew --prefix golang)/libexec"
 else
-  # General Linux
-  export GOROOT="/usr/local/go"
+	# General Linux
+	export GOROOT="/usr/local/go"
 fi
 export PATH="${PATH}:${GOPATH}/bin:${GOROOT}/bin" # Adding to PATH
-
-###############################################################################
 
 # Node Version Manager
 #    - Install: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
@@ -36,17 +35,37 @@ export NVM_DIR="$([ "${XDG_CONFIG_HOME-}" = "" ] && printf %s "${HOME}/.nvm" || 
 export PATH="${PATH}:/home/${USER}/.local/bin"
 export PATH="${PATH}:/Users/${USER}/.local/bin"
 
-###############################################################################
-
 # pyenv - Python version manager
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$HOME/.pyenv/bin:$PATH"
 export PATH="$PYENV_ROOT/bin:$PATH"
 if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
+	eval "$(pyenv init -)"
 fi
-
-###############################################################################
 
 # zoxide - A smarter cd command
 eval "$(zoxide init --cmd cd zsh)"
+
+# Docker
+export PATH="${PATH}:/Applications/Docker.app/Contents/Resources/bin"
+
+# echo "Init rvm ..."
+# export PATH="$PATH:$HOME/.rvm/bin"
+
+# Added by Windsurf
+export PATH="/Users/ezg822/.codeium/windsurf/bin:$PATH"
+
+# Proxy
+if [ -f /usr/local/cof/bin/awsproxy ]; then         #source_awsproxy
+	source /usr/local/cof/bin/awsproxy >/dev/null 2>&1 #source_awsproxy
+fi                                                  #source_awsproxy
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/ismet/.cache/lm-studio/bin"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# clear
+echo "Good to go!"

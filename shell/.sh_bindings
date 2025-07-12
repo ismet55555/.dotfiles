@@ -8,76 +8,182 @@
 ###############################################################################
 
 # Create a directory and cd into it
-function mkdircd () {
-  mkdir -p "$@" && eval cd "\"\$$#\""
+function mkdircd() {
+	mkdir -p "$@" && eval cd "\"\$$#\""
 }
 
 # Find largest file
-function large-files () {
-  du -h -x -s -- * | sort -r -h | head -20
+function large-files() {
+	du -h -x -s -- * | sort -r -h | head -20
 }
 
 # Copy command output to system clipboard
 function copy() {
-    if [[ $(uname) == 'Darwin' ]]; then
-        cat | pbcopy
-    elif [[ $(uname) == 'Linux' ]]; then
-        cat | xclip -selection clipboard
-    elif [[ $(uname) == 'Windows' ]]; then
-        cat > /dev/clipboard
-    else
-        echo "ERROR: Copy fail. Unsupported operating system: $(uname)"
-    fi
+	if [[ $(uname) == 'Darwin' ]]; then
+		cat | pbcopy
+	elif [[ $(uname) == 'Linux' ]]; then
+		cat | xclip -selection clipboard
+	elif [[ $(uname) == 'Windows' ]]; then
+		cat >/dev/clipboard
+	else
+		echo "ERROR: Copy fail. Unsupported operating system: $(uname)"
+	fi
 }
 
 ###############################################################################
 
 # Select a docker container to start and attach to
 function dock-start-attach() {
-  local cid
-  cid=$(docker ps -a | sed 1d | fzf -1 -q "$1" | awk '{print $1}')
+	local cid
+	cid=$(docker ps -a | sed 1d | fzf -1 -q "$1" | awk '{print $1}')
 
-  [ -n "$cid" ] && docker start "$cid" && docker attach "$cid"
+	[ "$cid" != "" ] && docker start "$cid" && docker attach "$cid"
 }
 
 # Interactive shell into running container
 function dock-attach() {
-  local cid
-  cid=$(docker ps | sed 1d | fzf -1 -q "$1" | awk '{print $1}')
+	local cid
+	cid=$(docker ps | sed 1d | fzf -1 -q "$1" | awk '{print $1}')
 
-  docker exec -it "$cid" /bin/bash || docker exec -it "$cid" /bin/sh
+	docker exec -it "$cid" /bin/bash || docker exec -it "$cid" /bin/sh
 }
 
 # Inspect a container
 function dock-inspect() {
-  local cid
-  cid=$(docker ps -a | sed 1d | fzf -1 -q "$1" | awk '{print $1}')
+	local cid
+	cid=$(docker ps -a | sed 1d | fzf -1 -q "$1" | awk '{print $1}')
 
-  docker inspect "$cid" | jq || docker inspect "$cid"
+	docker inspect "$cid" | jq || docker inspect "$cid"
 }
 
 # Select a running docker container to stop
 function dock-stop() {
-  local cid
-  cid=$(docker ps | sed 1d | fzf -q "$1" | awk '{print $1}')
+	local cid
+	cid=$(docker ps | sed 1d | fzf -q "$1" | awk '{print $1}')
 
-  [ -n "$cid" ] && docker stop "$cid"
+	[ "$cid" != "" ] && docker stop "$cid"
 }
 
 # Select a docker container to remove
 function dock-rm() {
-  local cid
-  cid=$(docker ps -a | sed 1d | fzf -q "$1" | awk '{print $1}')
+	local cid
+	cid=$(docker ps -a | sed 1d | fzf -q "$1" | awk '{print $1}')
 
-  [ -n "$cid" ] && docker rm "$cid"
+	[ "$cid" != "" ] && docker rm "$cid"
 }
 
 # Select a docker image or images to remove
 function dock-rmi() {
-  docker images | sed 1d | fzf -q "$1" --no-sort -m --tac | awk '{ print $3 }' | xargs -r docker rmi
+	docker images | sed 1d | fzf -q "$1" --no-sort -m --tac | awk '{ print $3 }' | xargs -r docker rmi
 }
 
 # Prune system of dangling resources
 function dock-prune() {
-  docker system prune --force
+	docker system prune --force
 }
+
+###############################################################################
+
+# git worktree
+gwtl() {
+	cd "$(git worktree list | fzf | awk '{print $1}')"
+}
+
+###############################################################################
+
+# Convert video files (.mov, mp4) to .gif
+function video2gif() {
+	local input_file="$1"
+	local palette_file="palette.png"
+	local output_file="${input_file%.*}.gif"
+
+	# Check for file existence
+	if [ ! -f "$input_file" ]; then
+		printf "File not found: %s\n" "$input_file"
+		return 1
+	fi
+
+	# Get the duration of the video
+	local duration=$(
+		ffprobe -v error \
+			-show_entries format=duration \
+			-of default=noprint_wrappers=1:nokey=1 "$input_file" || return 1
+	)
+
+	# Create the gif palette
+	ffmpeg -loglevel error \
+		-progress - \
+		-ss 0 \
+		-t "$duration" \
+		-i "$input_file" \
+		-filter_complex "[0:v] palettegen" "$palette_file" || return 1
+
+	# Create the gif
+	ffmpeg -loglevel error \
+		-progress - \
+		-ss 0 \
+		-t "$duration" \
+		-i "$input_file" \
+		-i "$palette_file" \
+		-filter_complex "[0:v] fps=10,scale=1024:-1 [new];[new][1:v] paletteuse" "$output_file" || return 1
+
+	# Clean up the palette file
+	rm "$palette_file"
+
+	printf "\nGif created: %s\n" "$output_file"
+}
+
+# Speed up mp4 by some percent
+change_speed_mp4() {
+	input_file="$1"   # Input local file path
+	speed_change="$2" # Percentage speed change, either positive or negative
+
+	# Calculate speed factors
+	if (($(echo "$speed_change > 0" | bc -l))); then
+		suffix="p${speed_change}"
+		video_factor=$(echo "1/(1+$speed_change/100)" | bc -l)
+		audio_factor=$(echo "1+$speed_change/100" | bc -l)
+	else
+		suffix="m${speed_change}"
+		video_factor=$(echo "1/(1+$speed_change/100)" | bc -l)
+		audio_factor=$(echo "1+$speed_change/100" | bc -l)
+	fi
+
+	# Generate output filename
+	filename="${input_file%.*}"
+	output_file="${filename}_speed_${suffix}.mp4"
+
+	echo "Changing video tempo ..."
+
+	ffmpeg -i "$input_file" \
+		-filter:v "setpts=${video_factor}*PTS" \
+		-filter:a "atempo=${audio_factor}" \
+		-v error \
+		"$output_file"
+
+	echo
+	echo "DONE!"
+}
+
+merge_mp4() {
+	input_file1="$1" # First input MP4 file
+	input_file2="$2" # Second input MP4 file
+
+	# Generate output filename
+	output_file="merged_${input_file1%.*}_${input_file2%.*}.mp4"
+
+	echo "Merging videos ..."
+	echo "Scale: 1920:1080 - 16/9"
+
+	# This function scales both input videos to a resolution of 1920x1080 with a display aspect ratio of 16:9 before concatenating them
+	ffmpeg -i "$input_file1" -i "$input_file2" \
+		-filter_complex "[0:v]scale=1920:1080,setdar=16/9[v0];[1:v]scale=1920:1080,setdar=16/9[v1];[v0][0:a][v1][1:a]concat=n=2:v=1:a=1[outv][outa]" \
+		-map "[outv]" -map "[outa]" \
+		-v error \
+		"$output_file"
+
+	echo
+	echo "DONE!"
+}
+
+###############################################################################
