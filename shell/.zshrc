@@ -178,3 +178,6 @@ if [ -f ~/.env ]; then
 fi
 
 # . "$HOME/.cargo/env"
+
+# Surpress warning - Powerlevel10k with instant prompt
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
