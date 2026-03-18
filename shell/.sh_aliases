@@ -67,7 +67,7 @@ alias hf="history | fzf"
 alias p="ps -ef | fzf"
 
 # Reload the shell
-alias reload-shell="exec $SHELL"
+alias reload-shell='exec env -i HOME="$HOME" TERM="$TERM" LANG="$LANG" DISPLAY="$DISPLAY" /usr/bin/zsh -l'
 
 # Processes
 alias p="ps -ef | fzf"
